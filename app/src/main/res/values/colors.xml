@@ -9,4 +9,7 @@
     <color name="colorPurple">#3912BD</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorBlue">#3333FF</color>
+    <color name="colorLightBlue3">#4D83FF</color>
+    <color name="colorLightBlue">#99CCFF</color>
 </resources>

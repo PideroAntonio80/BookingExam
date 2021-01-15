@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.data.User;
-import com.svalero.bookingexam.feature.search.SearchActivity;
+import com.svalero.bookingexam.feature.CentralActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View{
     private EditText etEmail;
@@ -34,11 +34,20 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             public void onClick(View v) {
                 String userEmail = etEmail.getText().toString();
                 String userPassword = etPassword.getText().toString();
+
                 User user = new User();
-                // Lo siguiente es para comprobar que no deja campos vacíos
                 user.setEmail(userEmail);
                 user.setPassword(userPassword);
-                loginPresenter.getUser(user);
+
+                // Comprobar que no deja campos vacíos
+                if(userEmail.isEmpty() || userPassword.isEmpty()) {
+                    String infoMessage = "Debes rellenar los campos email y password";
+                    info(infoMessage);
+                }
+                else {
+                    loginPresenter.getUser(user);
+                }
+
             }
         });
     }
@@ -49,10 +58,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         btLogin = findViewById(R.id.btLogin);
     }
 
+    public void info(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
     @Override
     public void successLogin(User user) {
-        Toast.makeText(this, "Bienvenido=" + user.getName(), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(getBaseContext(), SearchActivity.class);
+        Toast.makeText(this, "Bienvenido " + user.getName(), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getBaseContext(), CentralActivity.class);
         startActivity(intent);
     }
 

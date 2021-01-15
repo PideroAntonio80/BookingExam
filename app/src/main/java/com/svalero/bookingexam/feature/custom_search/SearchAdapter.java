@@ -1,8 +1,7 @@
-package com.svalero.bookingexam.feature.list_hotels;
+package com.svalero.bookingexam.feature.custom_search;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +19,11 @@ import com.svalero.bookingexam.feature.description.DescriptionActivity;
 
 import java.util.ArrayList;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewHolder> {
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearchViewHolder> {
     private ArrayList<Hotel> lstHotel;
 
     /*Tantos elementos como objetos quiera mostrar en la fila*/
-    public static class HotelListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class HotelSearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public ImageView fotoHotel;
         public TextView nombreHotel;
@@ -35,7 +34,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewH
         public Context context;
         public LinearLayout rowList;
 
-        public HotelListViewHolder(View v){
+        public HotelSearchViewHolder(View v){
             super(v);
             context = v.getContext();
             rowList = v.findViewById(R.id.rowList);
@@ -56,20 +55,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewH
         }
     }
 
-    public ListAdapter(ArrayList<Hotel> lstHotel) {
+    public SearchAdapter(ArrayList<Hotel> lstHotel) {
         this.lstHotel = lstHotel;
     }
 
     @NonNull
     @Override
-    public HotelListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SearchAdapter.HotelSearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list, parent,false);
 
-        return new HotelListViewHolder(v);
+        return new SearchAdapter.HotelSearchViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HotelListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SearchAdapter.HotelSearchViewHolder holder, int position) {
         Hotel hotel = lstHotel.get(position);
         String urlImage = "http://192.168.1.142:8090/BookingWeb/images/" + hotel.getFoto() + ".png";
         Picasso.get().load(urlImage).into(holder.fotoHotel);

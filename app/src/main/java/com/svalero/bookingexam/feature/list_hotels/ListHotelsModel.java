@@ -15,6 +15,11 @@ public class ListHotelsModel implements ListHotelsContract.Model{
     private static final String URL = "http://192.168.1.142:8090/BookingWeb/Controller";
     private ArrayList<Hotel> listArrayHotels;
     OnLstHotelsListener onLstHotelsListener;
+    private ListHotelsPresenter listHotelsPresenter;
+
+    public ListHotelsModel(ListHotelsPresenter listHotelsPresenter) {
+        this.listHotelsPresenter = listHotelsPresenter;
+    }
 
     @Override
     public void getHotelsWS(OnLstHotelsListener onLstHotelsListener) {
@@ -38,7 +43,6 @@ public class ListHotelsModel implements ListHotelsContract.Model{
             String url_select = params[0];
             try {
                 Post post = new Post();
-                //JSONObject objectHotels = post.getServerDataGetObject(URL);
                 JSONArray lstHotels = post.getServerDataPost(parametros,url_select);
                 listArrayHotels = Hotel.getArrayListFromJSON(lstHotels);
             } catch (Exception e) {
@@ -58,4 +62,5 @@ public class ListHotelsModel implements ListHotelsContract.Model{
 
         }
     }
+
 }

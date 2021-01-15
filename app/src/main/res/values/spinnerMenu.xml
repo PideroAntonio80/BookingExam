@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu">
+
+        <item>Menu Hoteles</item>
+        <item>--Lista completa de hoteles--</item>
+        <item>--Los 10 mas reservados--</item>
+
+    </string-array>
+</resources>

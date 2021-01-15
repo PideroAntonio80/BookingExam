@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="localidades">
+
+        <item>Selecciona una Localidad</item>
+        <item>Benasque</item>
+        <item>Bielsa</item>
+        <item>Torla</item>
+        <item>Plan</item>
+        <item>Canfranc</item>
+        <item>Anso</item>
+        <item>Hecho</item>
+        <item>Jaca</item>
+
+    </string-array>
+</resources>

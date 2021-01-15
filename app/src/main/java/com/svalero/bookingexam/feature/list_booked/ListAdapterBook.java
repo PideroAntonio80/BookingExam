@@ -1,8 +1,7 @@
-package com.svalero.bookingexam.feature.list_hotels;
+package com.svalero.bookingexam.feature.list_booked;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,31 +19,28 @@ import com.svalero.bookingexam.feature.description.DescriptionActivity;
 
 import java.util.ArrayList;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewHolder> {
+public class ListAdapterBook extends RecyclerView.Adapter<com.svalero.bookingexam.feature.list_booked.ListAdapterBook.BookViewHolder> {
     private ArrayList<Hotel> lstHotel;
 
     /*Tantos elementos como objetos quiera mostrar en la fila*/
-    public static class HotelListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class BookViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public ImageView fotoHotel;
         public TextView nombreHotel;
         public TextView nombreLocalidad;
-        public TextView categoria;
-        public TextView puntuacion;
-        public TextView precio;
+        public TextView reservas;
         public Context context;
         public LinearLayout rowList;
 
-        public HotelListViewHolder(View v){
+        public BookViewHolder(View v){
             super(v);
             context = v.getContext();
-            rowList = v.findViewById(R.id.rowList);
+            rowList = v.findViewById(R.id.rowBookList);
             fotoHotel = (ImageView) v.findViewById(R.id.ivFoto);
             nombreHotel = (TextView) v.findViewById(R.id.tvNombre);
             nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidad);
-            categoria = (TextView) v.findViewById(R.id.tvEstrellas);
-            puntuacion = (TextView) v.findViewById(R.id.tvPuntuacion);
-            precio = (TextView) v.findViewById(R.id.tvPrecio);
+            reservas = (TextView) v.findViewById(R.id.tvEstrellas);
+
             v.setOnClickListener(this);
         }
 
@@ -56,28 +52,26 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewH
         }
     }
 
-    public ListAdapter(ArrayList<Hotel> lstHotel) {
+    public ListAdapterBook(ArrayList<Hotel> lstHotel) {
         this.lstHotel = lstHotel;
     }
 
     @NonNull
     @Override
-    public HotelListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list, parent,false);
+    public com.svalero.bookingexam.feature.list_booked.ListAdapterBook.BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_book_hotels, parent,false);
 
-        return new HotelListViewHolder(v);
+        return new com.svalero.bookingexam.feature.list_booked.ListAdapterBook.BookViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HotelListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull com.svalero.bookingexam.feature.list_booked.ListAdapterBook.BookViewHolder holder, int position) {
         Hotel hotel = lstHotel.get(position);
         String urlImage = "http://192.168.1.142:8090/BookingWeb/images/" + hotel.getFoto() + ".png";
         Picasso.get().load(urlImage).into(holder.fotoHotel);
         holder.nombreHotel.setText(hotel.getNombre());
         holder.nombreLocalidad.setText(hotel.getNombre_localidad());
-        holder.categoria.setText(String.valueOf(hotel.getEstrellas()));
-        holder.puntuacion.setText(String.valueOf(hotel.getPuntuacion()));
-        holder.precio.setText(String.valueOf(hotel.getPrecio_medio()));
+        holder.reservas.setText(String.valueOf(hotel.getNumeroReservas()));
 
     }
 

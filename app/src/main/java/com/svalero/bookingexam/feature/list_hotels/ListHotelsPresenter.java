@@ -11,7 +11,7 @@ public class ListHotelsPresenter implements ListHotelsContract.Presenter{
 
     public ListHotelsPresenter(ListHotelsContract.View vista) {
         this.vista = vista;
-        this.listHotelsModel = new ListHotelsModel();
+        this.listHotelsModel = new ListHotelsModel(this);
     }
 
     @Override

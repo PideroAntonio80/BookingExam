@@ -8,54 +8,59 @@
     android:layout_height="match_parent"
     android:weightSum="100"
     android:orientation="vertical"
+    android:background="@drawable/login"
     tools:context=".feature.login.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="30"
-        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="65dp"
         android:layout_weight="10"
+        android:fontFamily="@font/bowlby_one_sc"
         android:gravity="center"
-        android:text="Introduce tu Email"
-        android:textSize="20dp"/>
+        android:text="Inicia Sesion"
+        android:textColor="@color/colorWhite"
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
+        android:gravity="center"
         android:hint="Email"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:layout_marginBottom="8dp"/>
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="5"
         android:gravity="center"
         android:text="Introduce tu Password"
-        android:textSize="20dp"/>
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"/>-->
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
+        android:gravity="center"
         android:inputType="textPassword"
         android:hint="Password"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
         android:layout_marginBottom="30dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="6"
         android:weightSum="10"
         android:orientation="horizontal"
         android:gravity="center">
@@ -64,7 +69,9 @@
             android:id="@+id/btLogin"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="4"
+            android:background="@drawable/button_border"
+            android:textColor="@color/colorWhite"
             android:text="Entrar" />
 
     </LinearLayout>

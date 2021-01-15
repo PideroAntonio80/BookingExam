@@ -12,20 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feature.filter.FilterActivity"></activity>
-        <!--<activity android:name=".feature.list_hotels.ListHotelsActivity" /> -->
+        <activity android:name=".feature.custom_search.SearchActivity"></activity>
+        <activity android:name=".feature.room.RoomActivity" />
+        <activity android:name=".feature.list_booked.BookActivity" />
+        <activity android:name=".feature.SplashActivity" />
+        <activity android:name=".feature.description.DescriptionActivity" />
+        <activity android:name=".feature.filter.FilterActivity" /> <!-- <activity android:name=".feature.list_hotels.ListHotelsActivity" /> -->
+
+        <activity android:name=".feature.list_hotels.ListHotelsActivity" />
         <activity android:name=".feature.login.LoginActivity" />
-        <!--<activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />-->
-        <activity android:name=".feature.search.SearchActivity"/>
-        <activity android:name=".feature.list_hotels.ListHotelsActivity" >
+        <activity android:name=".feature.CentralActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
