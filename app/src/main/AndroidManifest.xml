@@ -12,16 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feature.custom_search.SearchActivity"></activity>
+        <activity android:name=".feature.FinalSplashActivity"></activity>
+        <activity android:name=".feature.reservation.ReservationActivity" />
+        <activity android:name=".feature.custom_search.SearchActivity" />
         <activity android:name=".feature.room.RoomActivity" />
         <activity android:name=".feature.list_booked.BookActivity" />
         <activity android:name=".feature.SplashActivity" />
         <activity android:name=".feature.description.DescriptionActivity" />
         <activity android:name=".feature.filter.FilterActivity" /> <!-- <activity android:name=".feature.list_hotels.ListHotelsActivity" /> -->
-
         <activity android:name=".feature.list_hotels.ListHotelsActivity" />
         <activity android:name=".feature.login.LoginActivity" />
-        <activity android:name=".feature.CentralActivity" >
+        <activity android:name=".feature.CentralActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

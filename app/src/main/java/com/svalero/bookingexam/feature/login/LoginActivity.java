@@ -12,11 +12,15 @@ import android.widget.Toast;
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.data.User;
 import com.svalero.bookingexam.feature.CentralActivity;
+import com.svalero.bookingexam.feature.reservation.ReservationActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View{
     private EditText etEmail;
     private EditText etPassword;
     private Button btLogin;
+    private int idRoom;
+    private String nombreHotel;
+    private String nombreLocalidad;
 
     private LoginPresenter loginPresenter;
 
@@ -26,6 +30,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         setContentView(R.layout.activity_login);
 
         initComponents();
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            idRoom = Integer.parseInt(bundle.getString("room_id"));
+            nombreHotel= bundle.getString("nombre_hotel");
+            nombreLocalidad= bundle.getString("nombre_localidad");
+        }
 
         loginPresenter = new LoginPresenter(this);
 
@@ -64,8 +75,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void successLogin(User user) {
-        Toast.makeText(this, "Bienvenido " + user.getName(), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(getBaseContext(), CentralActivity.class);
+        Toast.makeText(this, "Ultimo paso " + user.getName(), Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getBaseContext(), ReservationActivity.class);
+        intent.putExtra("id_user", String.valueOf(user.getId()));
+        intent.putExtra("user_name", String.valueOf(user.getName()));
+        intent.putExtra("room_id", String.valueOf(idRoom));
+        intent.putExtra("nombre_hotel", String.valueOf(nombreHotel));
+        intent.putExtra("nombre_localidad", String.valueOf(nombreLocalidad));
         startActivity(intent);
     }
 

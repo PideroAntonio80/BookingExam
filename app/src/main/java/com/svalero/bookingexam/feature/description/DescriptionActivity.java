@@ -25,6 +25,7 @@ public class DescriptionActivity extends AppCompatActivity implements Descriptio
     private Hotel hotel;
     private Hotel hotelDescrito;
     private String nombreHotel;
+    private String nombreLocalidad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class DescriptionActivity extends AppCompatActivity implements Descriptio
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             nombreHotel = bundle.getString("nombre_hotel");
+            nombreLocalidad = bundle.getString("nombre_localidad");
         }
 
         hotel = new Hotel();

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".feature.reservation.ReservationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingLeft="12dp"
+            android:gravity="center_vertical"
+            android:text="Gracias por su Reserva"
+            android:textSize="18dp"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvCliente"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="Nombre Cliente"
+            android:textSize="18dp"
+            android:textColor="@color/colorBlack"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:textColor="@color/colorBlack"
+        android:text="Complete los datos que faltan"
+        android:textSize="25dp"
+        android:background="@color/colorLightBlue"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:paddingLeft="12dp"
+            android:gravity="center_vertical"
+            android:text="Localidad"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvLocalidadReserva"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7.5"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="Nombre Localidad"
+            android:textColor="@color/colorBlack"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:background="@color/colorLightBlue">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:paddingLeft="12dp"
+            android:gravity="center_vertical"
+            android:text="Hotel"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvHotelReserva"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7.5"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="Nombre Hotel"
+            android:textColor="@color/colorBlack"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:paddingLeft="12dp"
+            android:gravity="center_vertical"
+            android:text="Habitacion:"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvNumeroRoomReserva"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7.5"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="nº"
+            android:textColor="@color/colorBlack"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:background="@color/colorLightBlue">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:paddingLeft="12dp"
+            android:gravity="center_vertical"
+            android:text="Noches:"
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/etNoches"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7.5"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:textSize="15dp"
+            android:textColor="@color/colorBlack"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_marginBottom="15dp">
+
+        <Button
+            android:id="@+id/bFechaEntrada"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_border"
+            android:textColor="@color/colorWhite"
+            android:text="Fecha Entrada" />
+
+        <Button
+            android:id="@+id/bFechaSalida"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_border"
+            android:textColor="@color/colorWhite"
+            android:text="Fecha Salida" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        android:src="@drawable/finreserva"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="19"
+        android:weightSum="10"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/bFinalizar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:text="Finalizar   Reserva"
+            android:background="@drawable/button_border"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
+
+</LinearLayout>

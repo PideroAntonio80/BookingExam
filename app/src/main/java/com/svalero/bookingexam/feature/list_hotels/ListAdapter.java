@@ -52,6 +52,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewH
         public void onClick(View v) {
             Intent intent = new Intent(context, DescriptionActivity.class);
             intent.putExtra("nombre_hotel", nombreHotel.getText());
+            intent.putExtra("nombre_localidad", nombreLocalidad.getText());
             context.startActivity(intent);
         }
     }

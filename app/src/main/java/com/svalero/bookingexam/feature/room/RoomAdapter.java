@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.data.Room;
-import com.svalero.bookingexam.feature.description.DescriptionActivity;
 import com.svalero.bookingexam.feature.login.LoginActivity;
 
 import java.util.ArrayList;
@@ -26,6 +24,8 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     public static class RoomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView numeroRoom;
+        public TextView nombreHotel;
+        public TextView nombreLocalidad;
         public TextView capacidad;
         public TextView precio;
         public Context context;
@@ -35,6 +35,8 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             super(v);
             context = v.getContext();
             rowRoom = v.findViewById(R.id.rowRoom);
+            nombreHotel = (TextView) v.findViewById(R.id.tvNombreHotelRoom);
+            nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidadRoom);
             numeroRoom = (TextView) v.findViewById(R.id.tvNumeroRoom);
             capacidad = (TextView) v.findViewById(R.id.tvCapacidad);
             precio = (TextView) v.findViewById(R.id.tvPrecioRoom);
@@ -44,9 +46,12 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, LoginActivity.class);
+            intent.putExtra("room_id", String.valueOf(numeroRoom.getText()));
+            intent.putExtra("nombre_hotel", nombreHotel.getText());
+            intent.putExtra("nombre_localidad", nombreLocalidad.getText());
             context.startActivity(intent);
         }
-        // Hacer funcionar el boton reservar ????????
+
     }
 
     public RoomAdapter(ArrayList<Room> listRooms) {
@@ -66,6 +71,8 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         Room room = listRooms.get(position);
         /*String urlImage = "http://192.168.1.142:8090/BookingWeb/images/" + hotel.getFoto() + ".png";
         Picasso.get().load(urlImage).into(holder.fotoHotel);*/
+        holder.nombreHotel.setText(room.getNombreHotel());
+        holder.nombreLocalidad.setText(room.getNombreLocalidad());
         holder.numeroRoom.setText(String.valueOf(room.getIdRoom()));
         holder.capacidad.setText(String.valueOf(room.getCapacidad()));
         holder.precio.setText(String.valueOf(room.getPrecio()));

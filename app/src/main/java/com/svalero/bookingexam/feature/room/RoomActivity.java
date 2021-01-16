@@ -21,7 +21,6 @@ public class RoomActivity extends AppCompatActivity implements RoomContract.View
     private DividerItemDecoration divider;
     private String nombreHotel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

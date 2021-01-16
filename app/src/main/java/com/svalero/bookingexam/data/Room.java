@@ -14,10 +14,11 @@ public class Room {
     private static final String PRECIO = "precio";
     private static final String ID_HOTEL = "hotel";
     private static final String NOMBRE_HOTEL = "nombreHotel";
+    private static final String NOMBRE_LOCALIDAD = "localidad";
 
     private int idRoom, capacidad, idHotel;
     private double precio;
-    private String disponible, nombreHotel;
+    private String disponible, nombreHotel, nombreLocalidad;
 
     private static ArrayList<Room> list;
 
@@ -69,6 +70,12 @@ public class Room {
     public void setNombreHotel(String nombreHotel) {
         this.nombreHotel = nombreHotel;
     }
+    public String getNombreLocalidad() {
+        return nombreLocalidad;
+    }
+    public void setNombreLocalidad(String nombreLocalidad) {
+        this.nombreLocalidad = nombreLocalidad;
+    }
 
     public static ArrayList<Room> getArrayListFromJSON(JSONArray listRooms) {
         list = null;
@@ -87,6 +94,7 @@ public class Room {
                 room.setPrecio(jsonObject.getDouble(PRECIO));
                 room.setIdHotel(jsonObject.getInt(ID_HOTEL));
                 room.setNombreHotel(jsonObject.getString(NOMBRE_HOTEL));
+                room.setNombreLocalidad(jsonObject.getString(NOMBRE_LOCALIDAD));
 
                 list.add(room);
             }
@@ -95,6 +103,10 @@ public class Room {
             je.printStackTrace();
         }
 
+        return list;
+    }
+
+    public static ArrayList<Room> getList() {
         return list;
     }
 }
