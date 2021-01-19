@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.data.Hotel;
-import com.svalero.bookingexam.feature.CentralActivity;
 import com.svalero.bookingexam.feature.room.RoomActivity;
 
 public class DescriptionActivity extends AppCompatActivity implements DescriptionContract.View {

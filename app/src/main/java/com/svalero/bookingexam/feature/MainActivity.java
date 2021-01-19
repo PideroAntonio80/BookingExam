@@ -7,27 +7,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.feature.custom_search.SearchActivity;
-import com.svalero.bookingexam.feature.custom_search.SearchAdapter;
-import com.svalero.bookingexam.feature.custom_search.SearchContract;
-import com.svalero.bookingexam.feature.custom_search.SearchPresenter;
-import com.svalero.bookingexam.feature.description.DescriptionActivity;
 import com.svalero.bookingexam.feature.list_booked.BookActivity;
 import com.svalero.bookingexam.feature.list_hotels.ListHotelsActivity;
 import com.svalero.bookingexam.utils.customui.DatePickerFragment;
 
-import java.util.ArrayList;
-
-public class CentralActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Button dateIn;
     private Button dateOut;
@@ -40,7 +29,7 @@ public class CentralActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_central);
+        setContentView(R.layout.activity_main);
 
         initView();
 

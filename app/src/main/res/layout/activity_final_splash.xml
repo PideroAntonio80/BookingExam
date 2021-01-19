@@ -15,7 +15,15 @@
         android:id="@+id/tvMensajeFinal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bowlby_one_sc"
         android:gravity="center"
-        android:textSize="40dp"
-        android:textColor="@color/colorWhite"/>
+        tools:text="¡Gracias, buen viaje!"
+        android:textColor="@color/colorWhite"
+        android:textSize="50dp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ic_check_booking" />
+
 </LinearLayout>

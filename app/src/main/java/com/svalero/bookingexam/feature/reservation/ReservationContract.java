@@ -1,10 +1,6 @@
 package com.svalero.bookingexam.feature.reservation;
 
 import com.svalero.bookingexam.data.BookingRoom;
-import com.svalero.bookingexam.data.Hotel;
-import com.svalero.bookingexam.data.Room;
-import com.svalero.bookingexam.data.User;
-import com.svalero.bookingexam.feature.login.LoginContract;
 
 public class ReservationContract {
     interface View {

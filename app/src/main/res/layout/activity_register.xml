@@ -6,47 +6,70 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100"
     android:orientation="vertical"
-    android:background="@drawable/logindos"
-    tools:context=".feature.login.LoginActivity">
+    android:background="@drawable/registro"
+    android:weightSum="100"
+    tools:context=".feature.register.RegisterActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="65dp"
         android:layout_weight="10"
         android:fontFamily="@font/bowlby_one_sc"
-
         android:gravity="center"
-        android:text="@string/session_start_title"
+        android:text="@string/register_title"
         android:textColor="@color/colorWhite"
         android:textSize="25dp" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etNombreReg"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
         android:gravity="center"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:hint="@string/register_name_title"
+        android:textStyle="bold"
         android:textColorHint="@color/colorWhite"
         android:textColor="@color/colorWhite"
-        android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etApellidosReg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:gravity="center"
+        android:hint="@string/register_surename_title"
+        android:textStyle="bold"
+        android:textColorHint="@color/colorWhite"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/etEmailReg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:gravity="center"
+        android:hint="@string/email_title"
+        android:textStyle="bold"
+        android:textColorHint="@color/colorWhite"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/etPasswordReg"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
         android:gravity="center"
         android:inputType="textPassword"
         android:hint="@string/password_title"
+        android:textStyle="bold"
         android:textColorHint="@color/colorWhite"
         android:textColor="@color/colorWhite"
-        android:textStyle="bold"
         android:layout_marginBottom="30dp"/>
 
     <LinearLayout
@@ -58,53 +81,14 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/btLogin"
+            android:id="@+id/btRegistro"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
-            android:text="@string/login_button" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="20">
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="65dp"
-        android:layout_weight="10"
-        android:fontFamily="@font/bowlby_one_sc"
-        android:gravity="center"
-        android:text="@string/not_registered_yet_title"
-        android:textColor="@color/colorWhite"
-        android:textSize="25dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
-        android:weightSum="10"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btRegistrate"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="@drawable/button_border"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:text="@string/register_button" />
+            android:text="@string/register_button_title" />
 
     </LinearLayout>
 

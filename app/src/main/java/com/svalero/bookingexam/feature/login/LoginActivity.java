@@ -11,16 +11,21 @@ import android.widget.Toast;
 
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.data.User;
-import com.svalero.bookingexam.feature.CentralActivity;
+import com.svalero.bookingexam.feature.register.RegisterActivity;
 import com.svalero.bookingexam.feature.reservation.ReservationActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View{
     private EditText etEmail;
     private EditText etPassword;
     private Button btLogin;
-    private int idRoom;
+    private Button btRegistro;
+    private String idRoom;
     private String nombreHotel;
     private String nombreLocalidad;
+    private String idRoomR;
+    private String nombreHotelR;
+    private String nombreLocalidadR;
+    private String option;
 
     private LoginPresenter loginPresenter;
 
@@ -33,10 +38,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            idRoom = Integer.parseInt(bundle.getString("room_id"));
-            nombreHotel= bundle.getString("nombre_hotel");
-            nombreLocalidad= bundle.getString("nombre_localidad");
+            option = bundle.getString("option");
+            System.out.println(option);
+            if(option.equals("fromRoomAdapter")) {
+                idRoom = bundle.getString("room_id");
+                nombreHotel= bundle.getString("nombre_hotel");
+                nombreLocalidad= bundle.getString("nombre_localidad");
+            }
+            else if(option.equals("register")) {
+                idRoomR = bundle.getString("datoRoom");
+                nombreHotelR = bundle.getString("datoHotel");
+                nombreLocalidadR = bundle.getString("datoLocalidad");
+            }
         }
+
+        System.out.println(idRoomR + ", " + nombreHotelR + ", " + nombreLocalidadR);
 
         loginPresenter = new LoginPresenter(this);
 
@@ -61,12 +77,25 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
             }
         });
+
+        btRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
+                intent.putExtra("datoLocalidad", nombreLocalidad);
+                intent.putExtra("datoHotel", nombreHotel);
+                intent.putExtra("datoRoom", idRoom);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initComponents() {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btLogin = findViewById(R.id.btLogin);
+        btRegistro = findViewById(R.id.btRegistrate);
     }
 
     public void info(String message) {
@@ -75,14 +104,27 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void successLogin(User user) {
-        Toast.makeText(this, "Ultimo paso " + user.getName(), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(getBaseContext(), ReservationActivity.class);
-        intent.putExtra("id_user", String.valueOf(user.getId()));
-        intent.putExtra("user_name", String.valueOf(user.getName()));
-        intent.putExtra("room_id", String.valueOf(idRoom));
-        intent.putExtra("nombre_hotel", String.valueOf(nombreHotel));
-        intent.putExtra("nombre_localidad", String.valueOf(nombreLocalidad));
-        startActivity(intent);
+        if (option.equals("fromRoomAdapter")) {
+            Toast.makeText(this, "Ultimo paso " + user.getName(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getBaseContext(), ReservationActivity.class);
+            intent.putExtra("id_user", String.valueOf(user.getId()));
+            intent.putExtra("user_name", String.valueOf(user.getName()));
+            intent.putExtra("room_id", idRoom);
+            intent.putExtra("nombre_hotel", nombreHotel);
+            intent.putExtra("nombre_localidad", nombreLocalidad);
+            intent.putExtra("option", option);
+            startActivity(intent);
+        } else if(option.equals("register")) {
+            Toast.makeText(this, "Ultimo paso " + user.getName(), Toast.LENGTH_LONG).show();
+            Intent intentR = new Intent(getBaseContext(), ReservationActivity.class);
+            intentR.putExtra("id_user_r", String.valueOf(user.getId()));
+            intentR.putExtra("user_name_r", String.valueOf(user.getName()));
+            intentR.putExtra("room_id_r", idRoomR);
+            intentR.putExtra("nombre_hotel_r", nombreHotelR);
+            intentR.putExtra("nombre_localidad_r", nombreLocalidadR);
+            intentR.putExtra("option", option);
+            startActivity(intentR);
+        }
     }
 
     @Override

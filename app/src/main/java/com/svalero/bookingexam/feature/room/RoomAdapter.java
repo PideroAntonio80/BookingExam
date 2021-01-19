@@ -49,6 +49,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             intent.putExtra("room_id", String.valueOf(numeroRoom.getText()));
             intent.putExtra("nombre_hotel", nombreHotel.getText());
             intent.putExtra("nombre_localidad", nombreLocalidad.getText());
+            intent.putExtra("option", "fromRoomAdapter");
             context.startActivity(intent);
         }
 

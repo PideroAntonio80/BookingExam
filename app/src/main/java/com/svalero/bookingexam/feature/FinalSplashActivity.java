@@ -34,7 +34,7 @@ public class FinalSplashActivity extends AppCompatActivity {
                     public void run() {
 
                         Intent intent = new Intent(
-                                getBaseContext(), CentralActivity.class);
+                                getBaseContext(), MainActivity.class);
                         startActivity(intent);
                     }
                 }, 4000);

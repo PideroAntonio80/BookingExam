@@ -18,7 +18,7 @@
         android:background="@color/colorBlue"
         android:fontFamily="@font/bowlby_one_sc"
         android:gravity="center"
-        android:text="BOOKING.EXAM"
+        android:text="@string/booking_exam_title"
         android:textColor="@color/colorWhite"
         android:textSize="40dp"/>
 </LinearLayout>

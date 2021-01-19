@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:weightSum="100"
     android:orientation="vertical"
-    tools:context=".feature.CentralActivity">
+    tools:context=".feature.MainActivity">
 
     <TextView
         android:id="@+id/textView1"
@@ -19,7 +19,7 @@
         android:fontFamily="@font/bowlby_one_sc"
         android:gravity="center"
         android:paddingLeft="8dp"
-        android:text="BOOKING.EXAM"
+        android:text="@string/booking_exam_title"
         android:textColor="@color/colorWhite"
         android:textSize="40dp" />
 
@@ -68,7 +68,7 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_marginBottom="15dp"
-        android:text="Busqueda Personalizada:" />
+        android:text="@string/custom_search_title" />
 
 
 
@@ -98,7 +98,8 @@
             android:layout_margin="5dp"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"
-            android:text="Fecha Ida" />
+            android:textStyle="bold"
+            android:text="@string/date_in_button_title" />
 
         <Button
             android:id="@+id/bDateOut"
@@ -108,7 +109,8 @@
             android:layout_margin="5dp"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"
-            android:text="Fecha Vuelta" />
+            android:textStyle="bold"
+            android:text="@string/date_out_button_title" />
 
     </LinearLayout>
 
@@ -128,7 +130,8 @@
             android:gravity="center_vertical"
             android:paddingLeft="8dp"
             android:textStyle="bold"
-            android:text="NÚMERO DE PERSONAS:" />
+            android:textColor="@color/colorBlack"
+            android:text="@string/people_title" />
 
         <EditText
             android:id="@+id/tvNumPerson"
@@ -160,7 +163,8 @@
             android:layout_margin="5dp"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"
-            android:text="BUSCAR" />
+            android:textStyle="bold"
+            android:text="@string/search_button" />
 
     </LinearLayout>
 

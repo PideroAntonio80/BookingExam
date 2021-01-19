@@ -12,24 +12,17 @@ import android.widget.Toast;
 
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.data.BookingRoom;
-import com.svalero.bookingexam.data.Hotel;
-import com.svalero.bookingexam.data.Room;
-import com.svalero.bookingexam.feature.CentralActivity;
 import com.svalero.bookingexam.feature.FinalSplashActivity;
-import com.svalero.bookingexam.feature.custom_search.SearchActivity;
 import com.svalero.bookingexam.utils.customui.DatePickerFragment;
-
-import java.util.ArrayList;
 
 public class ReservationActivity extends AppCompatActivity implements ReservationContract.View {
     private TextView nombreCliente, nombreLocalidad, nombreHotel, numeroHabitacion;
     private EditText numeroNoches;
     private Button fechaEntrada, fechaSalida, finalizar;
     private ReservationPresenter reservationPresenter;
-    private int roomId, userId;
-    private String userName;
-    private String miHotel;
-    private String miLocalidad;
+    private String roomId, userId, roomIdR, userIdR;
+    private String miHotel, miHotelR, miLocalidad, miLocalidadR, userName, userNameR;
+    private String option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,24 +33,41 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            roomId = Integer.parseInt(bundle.getString("room_id"));
-            userId = Integer.parseInt(bundle.getString("id_user"));
-            userName = bundle.getString("user_name");
-            miHotel = bundle.getString("nombre_hotel");
-            miLocalidad = bundle.getString("nombre_localidad");
+            option = bundle.getString("option");
+            if (option.equals("fromRoomAdapter")) {
+                roomId = bundle.getString("room_id");
+                userId = bundle.getString("id_user");
+                miHotel = bundle.getString("nombre_hotel");
+                miLocalidad = bundle.getString("nombre_localidad");
+                userName = bundle.getString("user_name");
+            }
+            else if (option.equals("register")) {
+                roomIdR = bundle.getString("room_id_r");
+                userIdR = bundle.getString("id_user_r");
+                miHotelR = bundle.getString("nombre_hotel_r");
+                miLocalidadR = bundle.getString("nombre_localidad_r");
+                userNameR = bundle.getString("user_name_r");
+            }
         }
 
-        nombreCliente.setText(userName);
-        numeroHabitacion.setText(String.valueOf(roomId));
-        nombreHotel.setText(miHotel);
-        nombreLocalidad.setText(miLocalidad);
+        if (option.equals("fromRoomAdapter")) {
+            nombreCliente.setText(userName);
+            numeroHabitacion.setText(String.valueOf(roomId));
+            nombreHotel.setText(miHotel);
+            nombreLocalidad.setText(miLocalidad);
+        }
+        else if(option.equals("register")) {
+            nombreCliente.setText(userNameR);
+            numeroHabitacion.setText(String.valueOf(roomIdR));
+            nombreHotel.setText(miHotelR);
+            nombreLocalidad.setText(miLocalidadR);
+        }
 
         initListeners();
 
         reservationPresenter = new ReservationPresenter(this);
 
     }
-
 
     public void initComponents() {
         nombreCliente = findViewById(R.id.tvCliente);
@@ -103,10 +113,19 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookingRoom bookingRoom = new BookingRoom();
-                bookingRoom.setIdRoom(roomId);
-                bookingRoom.setIdUser(userId);
-                reservationPresenter.makeReservation(bookingRoom);
+                if(option.equals("fromRoomAdapter")) {
+                    BookingRoom bookingRoom = new BookingRoom();
+                    bookingRoom.setIdRoom(Integer.parseInt(roomId));
+                    bookingRoom.setIdUser(Integer.parseInt(userId));
+                    reservationPresenter.makeReservation(bookingRoom);
+                }
+                else if(option.equals("register")) {
+                    BookingRoom bookingRoom = new BookingRoom();
+                    bookingRoom.setIdRoom(Integer.parseInt(roomIdR));
+                    bookingRoom.setIdUser(Integer.parseInt(userIdR));
+                    reservationPresenter.makeReservation(bookingRoom);
+                }
+
             }
         });
 

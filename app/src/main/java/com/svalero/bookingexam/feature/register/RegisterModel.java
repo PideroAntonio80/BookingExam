@@ -1,4 +1,4 @@
-package com.svalero.bookingexam.feature.login;
+package com.svalero.bookingexam.feature.register;
 
 import android.os.AsyncTask;
 
@@ -10,18 +10,21 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LoginModel implements LoginContract.Model {
-    private ArrayList<User> listUsers;
-    private OnLoginUserListener onLoginUserListener;
+public class RegisterModel implements RegisterContract.Model {
+    ArrayList<User> lista;
+    private RegisterContract.Model.OnRegisterListener onRegisterListener;
     private String URL = "http://192.168.1.142:8090/BookingWeb/Controller";
 
     @Override
-    public void getUserService(final OnLoginUserListener onLoginUserListener, User user) {
-        this.onLoginUserListener = onLoginUserListener;
+    public void makeRegisterWS(OnRegisterListener onRegisterListener, User user) {
+        this.onRegisterListener = onRegisterListener;
+
         HashMap<String, String> param = new HashMap<>();
-        param.put("ACTION", "USER.LOGIN");
-        param.put("EMAIL", user.getEmail());
-        param.put("PASSWORD", user.getPassword());
+        param.put("ACTION", "USER.ADD");
+        param.put("NOMBRE", String.valueOf(user.getName()));
+        param.put("APELLIDOS", String.valueOf(user.getSureName()));
+        param.put("EMAIL", String.valueOf(user.getEmail()));
+        param.put("PASSWORD", String.valueOf(user.getPassword()));
 
         UnderTask underTask = new UnderTask(param);
         underTask.execute(URL);
@@ -41,7 +44,7 @@ public class LoginModel implements LoginContract.Model {
             try {
                 Post post = new Post();
                 JSONArray result = post.getServerDataPost(parametros,url_select);
-                listUsers = User.getArrayListFromJSON(result);
+                lista = User.getArrayListFromJSON(result) ;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -52,11 +55,12 @@ public class LoginModel implements LoginContract.Model {
         protected void onPostExecute(Boolean resp) {
             try {
                 if(resp) {
-                    onLoginUserListener.onFinished(listUsers.get(0));
+                    onRegisterListener.onFinished("¡Bienvenido " + lista.get(0).getName() + ", Inicia Sesion ahora!");
                 }
             } catch (Exception e) {
-                onLoginUserListener.onFailure("Email o Password incorrectos");
+                onRegisterListener.onFailure("Fallo al registrarse");
             }
         }
+
     }
 }

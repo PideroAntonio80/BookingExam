@@ -26,7 +26,7 @@
         android:layout_weight="8"
         android:gravity="center"
         android:textSize="26dp"
-        android:text="Nombre"/>
+        tools:text="Nombre"/>
 
     <TextView
         android:id="@+id/tvLocation"
@@ -34,7 +34,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:gravity="center"
-        android:text="Localidad"/>
+        tools:text="Localidad"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             android:layout_weight="3"
             android:paddingLeft="15dp"
             android:gravity="center_vertical"
-            android:text="Reservado:"/>
+            android:text="@string/booked_title"/>
 
         <TextView
             android:id="@+id/tvReservado"
@@ -59,14 +59,14 @@
             android:layout_weight="0.5"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
-            android:text="nº" />
+            tools:text="nº" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6.5"
             android:gravity="center_vertical"
-            android:text="veces"/>
+            android:text="@string/times_title"/>
 
     </LinearLayout>
 
@@ -82,7 +82,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:paddingLeft="15dp"
-            android:text="DESCRIPCIÓN:"/>
+            android:text="@string/description_title"/>
 
         <TextView
             android:id="@+id/tvDescripcion"
@@ -91,7 +91,7 @@
             android:layout_weight="7"
             android:paddingLeft="5dp"
             android:paddingRight="15dp"
-            android:text="TextView" />
+            tools:text="TextView" />
 
     </LinearLayout>
 
@@ -108,7 +108,7 @@
             android:layout_weight="3"
             android:paddingLeft="15dp"
             android:gravity="center_vertical"
-            android:text="Categoria:"/>
+            android:text="@string/category_title"/>
 
         <TextView
             android:id="@+id/tvEstrellasDescript"
@@ -117,14 +117,14 @@
             android:layout_weight="0.5"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
-            android:text="nº" />
+            tools:text="nº" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6.5"
             android:gravity="center_vertical"
-            android:text="Estrellas" />
+            android:text="@string/stars_title" />
 
     </LinearLayout>
 
@@ -141,7 +141,7 @@
             android:layout_weight="3"
             android:paddingLeft="15dp"
             android:gravity="center_vertical"
-            android:text="Puntuacion:"/>
+            android:text="@string/rate_title"/>
 
         <TextView
             android:id="@+id/tvPuntos"
@@ -150,7 +150,7 @@
             android:layout_weight="7"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
-            android:text="Puntos"/>
+            tools:text="Puntos"/>
 
     </LinearLayout>
 
@@ -167,7 +167,7 @@
             android:layout_weight="3"
             android:paddingLeft="15dp"
             android:gravity="center_vertical"
-            android:text="Precio Medio:"/>
+            android:text="@string/average_price_title"/>
 
         <TextView
             android:id="@+id/tvPrecioMedio"
@@ -176,14 +176,14 @@
             android:layout_weight="1.1"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
-            android:text="Precio"/>
+            tools:text="Precio"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5.9"
             android:gravity="center_vertical"
-            android:text="Euros" />
+            android:text="@string/euros_title" />
 
     </LinearLayout>
 
@@ -200,7 +200,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6"
-            android:text="SELECCIONAR"
+            android:text="@string/check_title"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"/>
 

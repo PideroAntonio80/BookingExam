@@ -55,7 +55,7 @@ public class ReservationModel implements ReservationContract.Model {
         protected void onPostExecute(Boolean resp) {
             try {
                 if(resp) {
-                    onBookingRoomListener.onFinished("Reserva realizada con exito");
+                    onBookingRoomListener.onFinished("¡Gracias, Buen Viaje!");
                 }
             } catch (Exception e) {
                 onBookingRoomListener.onFailure("Fallo al relizar la reserva");

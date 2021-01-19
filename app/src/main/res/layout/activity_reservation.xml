@@ -24,7 +24,7 @@
             android:layout_weight="5"
             android:paddingLeft="12dp"
             android:gravity="center_vertical"
-            android:text="Gracias por su Reserva"
+            android:text="@string/thanks_title"
             android:textSize="18dp"
             android:textColor="@color/colorBlack"/>
 
@@ -35,7 +35,7 @@
             android:layout_weight="5"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
-            android:text="Nombre Cliente"
+            tools:text="Johnny"
             android:textSize="18dp"
             android:textColor="@color/colorBlack"/>
 
@@ -46,7 +46,7 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:textColor="@color/colorBlack"
-        android:text="Complete los datos que faltan"
+        android:text="@string/fill_data_title"
         android:textSize="25dp"
         android:background="@color/colorLightBlue"
         android:gravity="center"/>
@@ -64,7 +64,7 @@
             android:layout_weight="2.5"
             android:paddingLeft="12dp"
             android:gravity="center_vertical"
-            android:text="Localidad"
+            android:text="@string/location_title"
             android:textColor="@color/colorBlack"/>
 
         <TextView
@@ -74,7 +74,7 @@
             android:layout_weight="7.5"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
-            android:text="Nombre Localidad"
+            tools:text="Nombre Localidad"
             android:textColor="@color/colorBlack"/>
 
     </LinearLayout>
@@ -93,7 +93,7 @@
             android:layout_weight="2.5"
             android:paddingLeft="12dp"
             android:gravity="center_vertical"
-            android:text="Hotel"
+            android:text="@string/hotel_title"
             android:textColor="@color/colorBlack"/>
 
         <TextView
@@ -103,7 +103,7 @@
             android:layout_weight="7.5"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
-            android:text="Nombre Hotel"
+            tools:text="Nombre Hotel"
             android:textColor="@color/colorBlack"/>
 
     </LinearLayout>
@@ -121,7 +121,7 @@
             android:layout_weight="2.5"
             android:paddingLeft="12dp"
             android:gravity="center_vertical"
-            android:text="Habitacion:"
+            android:text="@string/room_title"
             android:textColor="@color/colorBlack"/>
 
         <TextView
@@ -131,7 +131,7 @@
             android:layout_weight="7.5"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
-            android:text="nº"
+            tools:text="nº"
             android:textColor="@color/colorBlack"/>
 
     </LinearLayout>
@@ -148,9 +148,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2.5"
-            android:paddingLeft="12dp"
+            android:paddingStart="12dp"
             android:gravity="center_vertical"
-            android:text="Noches:"
+            android:text="@string/nights_title"
             android:textColor="@color/colorBlack"/>
 
         <EditText
@@ -158,7 +158,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="7.5"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:gravity="center_vertical"
             android:inputType="number"
             android:textSize="15dp"
@@ -183,7 +183,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"
-            android:text="Fecha Entrada" />
+            android:text="@string/date_in_button_title" />
 
         <Button
             android:id="@+id/bFechaSalida"
@@ -193,7 +193,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"
-            android:text="Fecha Salida" />
+            android:text="@string/date_out_button_title" />
 
     </LinearLayout>
 
@@ -218,7 +218,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="8"
-            android:text="Finalizar   Reserva"
+            android:text="@string/finish_reservation_title"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"/>
 
