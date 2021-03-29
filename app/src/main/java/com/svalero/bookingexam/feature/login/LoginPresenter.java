@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.login;
 
-import com.svalero.bookingexam.data.User;
+import com.svalero.bookingexam.data.models.User;
 
 public class LoginPresenter implements LoginContract.Presenter{
     private LoginContract.View vista;

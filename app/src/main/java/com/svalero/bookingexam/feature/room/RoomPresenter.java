@@ -1,7 +1,7 @@
 package com.svalero.bookingexam.feature.room;
 
-import com.svalero.bookingexam.data.Hotel;
-import com.svalero.bookingexam.data.Room;
+import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.models.Room;
 
 import java.util.ArrayList;
 

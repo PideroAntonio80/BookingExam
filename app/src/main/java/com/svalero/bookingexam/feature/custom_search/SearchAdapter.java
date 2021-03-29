@@ -13,14 +13,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.svalero.bookingexam.BuildConfig;
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.models.Hotel;
 import com.svalero.bookingexam.feature.description.DescriptionActivity;
 
 import java.util.ArrayList;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearchViewHolder> {
     private ArrayList<Hotel> lstHotel;
+    public static String numPers;
+    public static String fechaIn;
+    public static String fechaOut;
 
     /*Tantos elementos como objetos quiera mostrar en la fila*/
     public static class HotelSearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -51,12 +55,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearc
         public void onClick(View v) {
             Intent intent = new Intent(context, DescriptionActivity.class);
             intent.putExtra("nombre_hotel", nombreHotel.getText());
+            intent.putExtra("num_person", SearchAdapter.numPers);
+            intent.putExtra("fecha_in", SearchAdapter.fechaIn);
+            intent.putExtra("fecha_out", SearchAdapter.fechaOut);
             context.startActivity(intent);
         }
     }
 
-    public SearchAdapter(ArrayList<Hotel> lstHotel) {
+    public SearchAdapter(ArrayList<Hotel> lstHotel, String numPers, String fechaIn, String fechaOut) {
         this.lstHotel = lstHotel;
+        SearchAdapter.numPers = numPers;
+        SearchAdapter.fechaIn = fechaIn;
+        SearchAdapter.fechaOut = fechaOut;
     }
 
     @NonNull
@@ -70,7 +80,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearc
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.HotelSearchViewHolder holder, int position) {
         Hotel hotel = lstHotel.get(position);
-        String urlImage = "http://192.168.1.142:8090/BookingWeb/images/" + hotel.getFoto() + ".png";
+        String urlImage = BuildConfig.URL_SERVER + "images/" + hotel.getFoto() + ".png";
         Picasso.get().load(urlImage).into(holder.fotoHotel);
         holder.nombreHotel.setText(hotel.getNombre());
         holder.nombreLocalidad.setText(hotel.getNombre_localidad());

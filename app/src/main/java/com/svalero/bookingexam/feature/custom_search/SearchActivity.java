@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.models.Hotel;
 
 import java.util.ArrayList;
 
@@ -20,6 +20,9 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     private DividerItemDecoration divider;
     private SearchPresenter searchPresenter;
     private String localidad;
+    private String numPers;
+    private String fechaIn;
+    private String fechaOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,9 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             localidad = bundle.getString("nombre_localidad");
+            numPers = bundle.getString("numero_personas");
+            fechaIn = bundle.getString("fecha_entrada");
+            fechaOut = bundle.getString("fecha_salida");
         }
 
         Hotel hotel = new Hotel();
@@ -46,7 +52,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);
 
-        SearchAdapter searchAdapter = new SearchAdapter(hotels);
+        SearchAdapter searchAdapter = new SearchAdapter(hotels, numPers, fechaIn, fechaOut);
         searchAdapter.notifyDataSetChanged();
         divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         divider.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));

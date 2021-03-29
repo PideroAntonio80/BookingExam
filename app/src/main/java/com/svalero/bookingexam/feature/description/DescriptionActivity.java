@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.models.Hotel;
 import com.svalero.bookingexam.feature.room.RoomActivity;
 
 public class DescriptionActivity extends AppCompatActivity implements DescriptionContract.View {
@@ -25,6 +25,9 @@ public class DescriptionActivity extends AppCompatActivity implements Descriptio
     private Hotel hotelDescrito;
     private String nombreHotel;
     private String nombreLocalidad;
+    private String numPers;
+    private String fechaIn;
+    private String fechaOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class DescriptionActivity extends AppCompatActivity implements Descriptio
         if (bundle != null) {
             nombreHotel = bundle.getString("nombre_hotel");
             nombreLocalidad = bundle.getString("nombre_localidad");
+            numPers = bundle.getString("num_person");
+            fechaIn = bundle.getString("fecha_in");
+            fechaOut = bundle.getString("fecha_out");
         }
 
         hotel = new Hotel();
@@ -50,6 +56,9 @@ public class DescriptionActivity extends AppCompatActivity implements Descriptio
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), RoomActivity.class);
                 intent.putExtra("nombre_hotel", nombreHotel);
+                intent.putExtra("num_pers", numPers);
+                intent.putExtra("date_in", fechaIn);
+                intent.putExtra("date_out", fechaOut);
                 startActivity(intent);
             }
         });

@@ -7,84 +7,117 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/registro"
+    android:gravity="center"
+    android:background="@color/colorBlue"
     android:weightSum="100"
     tools:context=".feature.register.RegisterActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="65dp"
-        android:layout_weight="10"
-        android:fontFamily="@font/bowlby_one_sc"
-        android:gravity="center"
-        android:text="@string/register_title"
-        android:textColor="@color/colorWhite"
-        android:textSize="25dp" />
-
-    <EditText
-        android:id="@+id/etNombreReg"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:gravity="center"
-        android:hint="@string/register_name_title"
-        android:textStyle="bold"
-        android:textColorHint="@color/colorWhite"
-        android:textColor="@color/colorWhite"
-        android:layout_marginBottom="8dp"/>
-
-    <EditText
-        android:id="@+id/etApellidosReg"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:gravity="center"
-        android:hint="@string/register_surename_title"
-        android:textStyle="bold"
-        android:textColorHint="@color/colorWhite"
-        android:textColor="@color/colorWhite"
-        android:layout_marginBottom="8dp"/>
-
-    <EditText
-        android:id="@+id/etEmailReg"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:gravity="center"
-        android:hint="@string/email_title"
-        android:textStyle="bold"
-        android:textColorHint="@color/colorWhite"
-        android:textColor="@color/colorWhite"
-        android:layout_marginBottom="8dp"/>
-
-    <EditText
-        android:id="@+id/etPasswordReg"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:gravity="center"
-        android:inputType="textPassword"
-        android:hint="@string/password_title"
-        android:textStyle="bold"
-        android:textColorHint="@color/colorWhite"
-        android:textColor="@color/colorWhite"
-        android:layout_marginBottom="30dp"/>
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
-        android:weightSum="10"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/colorLightBlue">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/bowlby_one_sc"
+            android:shadowColor="@color/colorBlack"
+            android:shadowRadius="15"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:gravity="center"
+            android:text="@string/register_title"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300sp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/colorWhite"
+            app:hintTextColor="@color/colorBlack"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/colorWhite"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNombreReg"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:hint="@string/register_name_title"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300sp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:boxStrokeColor="@color/colorWhite"
+            app:hintTextColor="@color/colorBlack"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/colorWhite"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etApellidosReg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/register_surename_title" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300sp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:boxStrokeColor="@color/colorWhite"
+            app:hintTextColor="@color/colorBlack"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/colorWhite"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmailReg"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email_title"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300sp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            app:boxStrokeColor="@color/colorWhite"
+            app:hintTextColor="@color/colorBlack"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/colorWhite"
+            app:endIconMode="password_toggle"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPasswordReg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/password_title"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btRegistro"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"

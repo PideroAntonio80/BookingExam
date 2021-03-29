@@ -13,8 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.svalero.bookingexam.BuildConfig;
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.models.Hotel;
 import com.svalero.bookingexam.feature.description.DescriptionActivity;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class ListAdapterBook extends RecyclerView.Adapter<com.svalero.bookingexa
     @Override
     public void onBindViewHolder(@NonNull com.svalero.bookingexam.feature.list_booked.ListAdapterBook.BookViewHolder holder, int position) {
         Hotel hotel = lstHotel.get(position);
-        String urlImage = "http://192.168.1.142:8090/BookingWeb/images/" + hotel.getFoto() + ".png";
+        String urlImage = BuildConfig.URL_SERVER + "images/" + hotel.getFoto() + ".png";
         Picasso.get().load(urlImage).into(holder.fotoHotel);
         holder.nombreHotel.setText(hotel.getNombre());
         holder.nombreLocalidad.setText(hotel.getNombre_localidad());

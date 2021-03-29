@@ -1,4 +1,4 @@
-package com.svalero.bookingexam.data;
+package com.svalero.bookingexam.data.models;
 
 import org.json.JSONArray;
 import org.json.JSONException;

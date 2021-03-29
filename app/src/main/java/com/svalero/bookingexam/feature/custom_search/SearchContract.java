@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.custom_search;
 
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.models.Hotel;
 
 import java.util.ArrayList;
 

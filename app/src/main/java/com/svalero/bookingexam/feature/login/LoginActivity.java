@@ -9,14 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.User;
+import com.svalero.bookingexam.data.models.User;
 import com.svalero.bookingexam.feature.register.RegisterActivity;
 import com.svalero.bookingexam.feature.reservation.ReservationActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View{
     private EditText etEmail;
     private EditText etPassword;
+    private TextInputLayout tilEmail;
+    private TextInputLayout tilPassword;
     private Button btLogin;
     private Button btRegistro;
     private String idRoom;
@@ -25,6 +28,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private String idRoomR;
     private String nombreHotelR;
     private String nombreLocalidadR;
+    private String numPers;
+    private String fechaIn;
+    private String fechaOut;
+    private String numPersR;
+    private String fechaInR;
+    private String fechaOutR;
+    private String precio;
+    private String precioR;
     private String option;
 
     private LoginPresenter loginPresenter;
@@ -40,19 +51,26 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         if (bundle != null) {
             option = bundle.getString("option");
             System.out.println(option);
+
             if(option.equals("fromRoomAdapter")) {
                 idRoom = bundle.getString("room_id");
                 nombreHotel= bundle.getString("nombre_hotel");
                 nombreLocalidad= bundle.getString("nombre_localidad");
+                numPers = bundle.getString("num_person");
+                fechaIn = bundle.getString("fecha_in");
+                fechaOut = bundle.getString("fecha_out");
+                precio = bundle.getString("precio");
             }
             else if(option.equals("register")) {
                 idRoomR = bundle.getString("datoRoom");
                 nombreHotelR = bundle.getString("datoHotel");
                 nombreLocalidadR = bundle.getString("datoLocalidad");
+                numPersR = bundle.getString("persons");
+                fechaInR = bundle.getString("dateIn");
+                fechaOutR = bundle.getString("dateOut");
+                precioR = bundle.getString("precio_reg");
             }
         }
-
-        System.out.println(idRoomR + ", " + nombreHotelR + ", " + nombreLocalidadR);
 
         loginPresenter = new LoginPresenter(this);
 
@@ -86,7 +104,18 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 intent.putExtra("datoLocalidad", nombreLocalidad);
                 intent.putExtra("datoHotel", nombreHotel);
                 intent.putExtra("datoRoom", idRoom);
+                intent.putExtra("num_pers", numPers);
+                intent.putExtra("fecha_in", fechaIn);
+                intent.putExtra("fecha_out", fechaOut);
+                intent.putExtra("precioReg", precio);
                 startActivity(intent);
+            }
+        });
+
+        etEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tilEmail.setError(null);
             }
         });
     }
@@ -96,6 +125,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         etPassword = findViewById(R.id.etPassword);
         btLogin = findViewById(R.id.btLogin);
         btRegistro = findViewById(R.id.btRegistrate);
+        tilEmail = findViewById(R.id.tilEmail);
+        tilPassword = findViewById(R.id.tilPassword);
     }
 
     public void info(String message) {
@@ -112,6 +143,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             intent.putExtra("room_id", idRoom);
             intent.putExtra("nombre_hotel", nombreHotel);
             intent.putExtra("nombre_localidad", nombreLocalidad);
+            intent.putExtra("num_person", numPers);
+            intent.putExtra("fecha_in", fechaIn);
+            intent.putExtra("fecha_out", fechaOut);
+            intent.putExtra("precio", precio);
             intent.putExtra("option", option);
             startActivity(intent);
         } else if(option.equals("register")) {
@@ -122,6 +157,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             intentR.putExtra("room_id_r", idRoomR);
             intentR.putExtra("nombre_hotel_r", nombreHotelR);
             intentR.putExtra("nombre_localidad_r", nombreLocalidadR);
+            intentR.putExtra("persons_r", numPersR);
+            intentR.putExtra("date_in_r", fechaInR);
+            intentR.putExtra("date_out_r", fechaOutR);
+            intentR.putExtra("precio_r", precioR);
             intentR.putExtra("option", option);
             startActivity(intentR);
         }
@@ -129,6 +168,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void failureLogin(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        tilEmail.setError("Usuario o Password Incorrectos");
     }
 }

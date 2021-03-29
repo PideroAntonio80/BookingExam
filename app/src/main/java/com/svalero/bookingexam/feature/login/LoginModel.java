@@ -2,7 +2,8 @@ package com.svalero.bookingexam.feature.login;
 
 import android.os.AsyncTask;
 
-import com.svalero.bookingexam.data.User;
+import com.svalero.bookingexam.BuildConfig;
+import com.svalero.bookingexam.data.models.User;
 import com.svalero.bookingexam.utils.Post;
 
 import org.json.JSONArray;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 public class LoginModel implements LoginContract.Model {
     private ArrayList<User> listUsers;
     private OnLoginUserListener onLoginUserListener;
-    private String URL = "http://192.168.1.142:8090/BookingWeb/Controller";
+    private String URL = BuildConfig.URL_SERVER + "Controller";
 
     @Override
     public void getUserService(final OnLoginUserListener onLoginUserListener, User user) {

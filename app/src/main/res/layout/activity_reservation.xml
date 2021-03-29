@@ -16,7 +16,7 @@
         android:layout_weight="8"
         android:orientation="horizontal"
         android:weightSum="10"
-        android:layout_marginTop="10dp">
+        android:background="@color/colorLightBlue">
 
         <TextView
             android:layout_width="0dp"
@@ -25,7 +25,7 @@
             android:paddingLeft="12dp"
             android:gravity="center_vertical"
             android:text="@string/thanks_title"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="@color/colorBlack"/>
 
         <TextView
@@ -36,7 +36,7 @@
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             tools:text="Johnny"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="@color/colorBlack"/>
 
     </LinearLayout>
@@ -48,7 +48,6 @@
         android:textColor="@color/colorBlack"
         android:text="@string/fill_data_title"
         android:textSize="25dp"
-        android:background="@color/colorLightBlue"
         android:gravity="center"/>
 
     <LinearLayout
@@ -56,6 +55,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="horizontal"
+        android:background="@color/colorLightBlue"
         android:weightSum="10">
 
         <TextView
@@ -84,8 +84,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="horizontal"
-        android:weightSum="10"
-        android:background="@color/colorLightBlue">
+        android:weightSum="10">
 
         <TextView
             android:layout_width="0dp"
@@ -113,6 +112,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="horizontal"
+        android:background="@color/colorLightBlue"
         android:weightSum="10">
 
         <TextView
@@ -141,8 +141,7 @@
         android:layout_height="0dp"
         android:layout_weight="6"
         android:orientation="horizontal"
-        android:weightSum="10"
-        android:background="@color/colorLightBlue">
+        android:weightSum="10">
 
         <TextView
             android:layout_width="0dp"
@@ -153,15 +152,16 @@
             android:text="@string/nights_title"
             android:textColor="@color/colorBlack"/>
 
-        <EditText
-            android:id="@+id/etNoches"
+        <TextView
+            android:id="@+id/tvNochesReserva"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:paddingStart="5dp"
             android:gravity="center_vertical"
             android:inputType="number"
-            android:textSize="15dp"
+            android:textSize="15sp"
+            tools:text="nº"
             android:textColor="@color/colorBlack"/>
 
     </LinearLayout>
@@ -169,11 +169,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
+        android:layout_weight="6"
+        android:orientation="horizontal"
+        android:background="@color/colorLightBlue"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:paddingLeft="12dp"
+            android:gravity="center_vertical"
+            android:text="@string/reservation_num_person_title"
+            android:textColor="@color/colorBlack"/>
+
+        <EditText
+            android:id="@+id/etNumPersonsReserva"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            tools:text="nº"
+            android:textColor="@color/colorBlack"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"
         android:orientation="horizontal"
         android:gravity="center"
-        android:padding="8dp"
-        android:layout_marginBottom="15dp">
+        android:padding="8dp">
 
         <Button
             android:id="@+id/bFechaEntrada"
@@ -201,14 +230,44 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="30"
+        android:layout_weight="25"
         android:src="@drawable/finreserva"
         android:scaleType="fitXY"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="19"
+        android:layout_weight="6"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.5"
+            android:paddingStart="12dp"
+            android:gravity="center_vertical"
+            android:text="@string/reservation_total_prize_title"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvPrecioTotal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7.5"
+            android:paddingStart="5dp"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:textSize="15sp"
+            tools:text="$"
+            android:textColor="@color/colorBlack"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
         android:weightSum="10"
         android:orientation="horizontal"
         android:gravity="center">

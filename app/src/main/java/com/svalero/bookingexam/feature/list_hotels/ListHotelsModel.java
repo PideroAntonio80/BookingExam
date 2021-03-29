@@ -2,7 +2,8 @@ package com.svalero.bookingexam.feature.list_hotels;
 
 import android.os.AsyncTask;
 
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.BuildConfig;
+import com.svalero.bookingexam.data.models.Hotel;
 import com.svalero.bookingexam.utils.Post;
 
 import org.json.JSONArray;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 
 public class ListHotelsModel implements ListHotelsContract.Model{
 
-    private static final String URL = "http://192.168.1.142:8090/BookingWeb/Controller";
+    private static final String URL = BuildConfig.URL_SERVER + "Controller";
     private ArrayList<Hotel> listArrayHotels;
     OnLstHotelsListener onLstHotelsListener;
     private ListHotelsPresenter listHotelsPresenter;

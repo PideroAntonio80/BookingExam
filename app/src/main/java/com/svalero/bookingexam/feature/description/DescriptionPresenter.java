@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.description;
 
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.models.Hotel;
 
 public class DescriptionPresenter implements DescriptionContract.Presenter {
 

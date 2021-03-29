@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.list_hotels;
 
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.models.Hotel;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class ListHotelsPresenter implements ListHotelsContract.Presenter{
 
             @Override
             public void reject(String error) {
-                vista.error("Problemas al traer los datos.");
+                vista.error(error);
             }
         });
     }

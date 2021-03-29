@@ -134,7 +134,7 @@
             android:text="@string/people_title" />
 
         <EditText
-            android:id="@+id/tvNumPerson"
+            android:id="@+id/etNumPerson"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"

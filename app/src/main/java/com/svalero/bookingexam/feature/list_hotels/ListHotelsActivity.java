@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.models.Hotel;
 import com.svalero.bookingexam.feature.filter.FilterActivity;
 
 import java.util.ArrayList;
@@ -27,15 +29,25 @@ public class ListHotelsActivity extends AppCompatActivity implements ListHotelsC
     private DividerItemDecoration divider;
     private Spinner filtros;
 
+    private View layoutError;
+    private TextView tvError;
+    private ProgressBar loading;
+    private Button retry;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_hotels);
 
+        initComponents();
+
+        loading.setVisibility(View.VISIBLE);
+        recycler.setVisibility(View.GONE);
+        filtros.setVisibility(View.GONE);
+        layoutError.setVisibility(View.GONE);
+
         listHotelsPresenter = new ListHotelsPresenter(this);
         listHotelsPresenter.getHotels();
-
-        filtros = findViewById(R.id.sFilter);
 
         ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(this,
                 R.array.filter, android.R.layout.simple_spinner_dropdown_item);
@@ -77,11 +89,35 @@ public class ListHotelsActivity extends AppCompatActivity implements ListHotelsC
             }
         });
 
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loading.setVisibility(View.VISIBLE);
+                recycler.setVisibility(View.GONE);
+                filtros.setVisibility(View.GONE);
+                layoutError.setVisibility(View.GONE);
+
+                listHotelsPresenter.getHotels();
+            }
+        });
+
+    }
+
+    public void initComponents() {
+        recycler = (RecyclerView) findViewById(R.id.rvList);
+        layoutError = findViewById(R.id.llLayoutError);
+        tvError = findViewById(R.id.tvError);
+        filtros = findViewById(R.id.sFilter);
+        loading = findViewById(R.id.pbLoading);
+        retry = findViewById(R.id.bRetry);
     }
 
     @Override
     public void success(ArrayList<Hotel> hotels) {
-        recycler = (RecyclerView) findViewById(R.id.rvList);
+        recycler.setVisibility(View.VISIBLE);
+        filtros.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
+        layoutError.setVisibility(View.GONE);
         recycler.setHasFixedSize(true);
 
         lManager = new LinearLayoutManager(this);
@@ -96,7 +132,13 @@ public class ListHotelsActivity extends AppCompatActivity implements ListHotelsC
     }
 
     @Override
+
     public void error(String message) {
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        layoutError.setVisibility(View.VISIBLE);
+        loading.setVisibility(View.GONE);
+        recycler.setVisibility(View.GONE);
+        filtros.setVisibility(View.GONE);
+        tvError.setText(message);
     }
 }

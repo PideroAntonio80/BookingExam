@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.Hotel;
-import com.svalero.bookingexam.data.Room;
+import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.models.Room;
 
 import java.util.ArrayList;
 
@@ -20,6 +20,9 @@ public class RoomActivity extends AppCompatActivity implements RoomContract.View
     private RecyclerView.LayoutManager lManager;
     private DividerItemDecoration divider;
     private String nombreHotel;
+    private String numPers;
+    private String fechaIn;
+    private String fechaOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,9 @@ public class RoomActivity extends AppCompatActivity implements RoomContract.View
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             nombreHotel = bundle.getString("nombre_hotel");
+            numPers = bundle.getString("num_pers");
+            fechaIn = bundle.getString("date_in");
+            fechaOut = bundle.getString("date_out");
         }
 
         Hotel hotel = new Hotel();
@@ -46,7 +52,7 @@ public class RoomActivity extends AppCompatActivity implements RoomContract.View
         lManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(lManager);
 
-        RoomAdapter roomAdapter = new RoomAdapter(rooms);
+        RoomAdapter roomAdapter = new RoomAdapter(rooms, numPers, fechaIn, fechaOut);
         roomAdapter.notifyDataSetChanged();
         divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         divider.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));

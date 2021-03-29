@@ -1,8 +1,6 @@
 package com.svalero.bookingexam.feature.list_booked;
 
-import com.svalero.bookingexam.data.Hotel;
-import com.svalero.bookingexam.feature.list_hotels.ListHotelsContract;
-import com.svalero.bookingexam.feature.list_hotels.ListHotelsModel;
+import com.svalero.bookingexam.data.models.Hotel;
 
 import java.util.ArrayList;
 

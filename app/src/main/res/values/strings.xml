@@ -47,4 +47,7 @@
     <string name="prize_literal_title">Precio :</string>
     <string name="push_here_for_booking_title">Pulse para hacer su reserva</string>
     <string name="check_title">SELECCIONAR</string>
+    <string name="reservation_num_person_title">Número de personas:</string>
+    <string name="reservation_total_prize_title">Precio Total:</string>
+    <string name="activity_list_hotels_data_error">Error al obtenr los datos</string>
 </resources>

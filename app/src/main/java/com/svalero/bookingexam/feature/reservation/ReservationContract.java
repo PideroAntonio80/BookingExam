@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.reservation;
 
-import com.svalero.bookingexam.data.BookingRoom;
+import com.svalero.bookingexam.data.models.BookingRoom;
 
 public class ReservationContract {
     interface View {

@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,15 +18,20 @@ import com.svalero.bookingexam.feature.list_booked.BookActivity;
 import com.svalero.bookingexam.feature.list_hotels.ListHotelsActivity;
 import com.svalero.bookingexam.utils.customui.DatePickerFragment;
 
+import java.sql.Date;
+
 public class MainActivity extends AppCompatActivity {
 
+    private EditText personas;
     private Button dateIn;
     private Button dateOut;
     private Button buscar;
     private Spinner location;
     private Spinner menu;
     private String localidad;
-
+    private String numPerson;
+    private String dateStart;
+    private String dateEnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +45,29 @@ public class MainActivity extends AppCompatActivity {
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (personas.getText().equals("") || personas.getText().equals("0")) {
+                    info("Debes indicar un numero de personas mayor que 0");
+                    return;
+                }
+                numPerson = String.valueOf(personas.getText());
                 Intent intent = new Intent(getBaseContext(), SearchActivity.class);
                 intent.putExtra("nombre_localidad", localidad);
+                intent.putExtra("numero_personas", numPerson);
+                intent.putExtra("fecha_entrada", dateStart);
+                intent.putExtra("fecha_salida", dateEnd);
                 startActivity(intent);
+                System.out.println(numPerson);
             }
         });
 
     }
 
+    public void info(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
     public void initView() {
+        personas = findViewById(R.id.etNumPerson);
         dateIn = findViewById(R.id.bDateIn);
         dateOut = findViewById(R.id.bDateOut);
         buscar = findViewById(R.id.bBuscar);
@@ -61,8 +82,21 @@ public class MainActivity extends AppCompatActivity {
                 DatePickerFragment calendarioIn = DatePickerFragment.newInstance(new DatePickerFragment.OnDateChangeListener() {
                     @Override
                     public void onDateChange(int year, int month, int dayOfMonth) {
-                        String dateFormatted = dayOfMonth + "/" + (month + 1) + "/" + year;
+
+                        String dateFormatted;
+
+                        if(dayOfMonth < 10 && month < 9) {
+                            dateFormatted = year + "-0" + (month + 1) + "-0" + dayOfMonth;
+                        } else if (dayOfMonth < 10 && month >= 9) {
+                            dateFormatted = year + "-" + (month + 1) + "-0" + dayOfMonth;
+                        } else if (dayOfMonth >= 10 && month < 9) {
+                            dateFormatted = year + "-0" + (month + 1) + "-" + dayOfMonth;
+                        } else {
+                            dateFormatted = year + "-" + (month + 1) + "-" + dayOfMonth;
+                        }
+
                         dateIn.setText(dateFormatted);
+                        dateStart = String.valueOf(dateIn.getText());
                     }
                 });
                 calendarioIn.show(getSupportFragmentManager(), "fechaIda");
@@ -75,8 +109,21 @@ public class MainActivity extends AppCompatActivity {
                 DatePickerFragment calendarioOut = DatePickerFragment.newInstance(new DatePickerFragment.OnDateChangeListener() {
                     @Override
                     public void onDateChange(int year, int month, int dayOfMonth) {
-                        String dateFormatted = dayOfMonth + "/" + (month + 1) + "/" + year;
+
+                        String dateFormatted;
+
+                        if(dayOfMonth < 10 && month < 9) {
+                            dateFormatted = year + "-0" + (month + 1) + "-0" + dayOfMonth;
+                        } else if (dayOfMonth < 10 && month >= 9) {
+                            dateFormatted = year + "-" + (month + 1) + "-0" + dayOfMonth;
+                        } else if (dayOfMonth >= 10 && month < 9) {
+                            dateFormatted = year + "-0" + (month + 1) + "-" + dayOfMonth;
+                        } else {
+                            dateFormatted = year + "-" + (month + 1) + "-" + dayOfMonth;
+                        }
+
                         dateOut.setText(dateFormatted);
+                        dateEnd = String.valueOf(dateOut.getText());
                     }
                 });
                 calendarioOut.show(getSupportFragmentManager(), "fechaVuelta");
