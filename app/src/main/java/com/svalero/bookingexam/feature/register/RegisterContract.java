@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.register;
 
-import com.svalero.bookingexam.data.models.User;
+import com.svalero.bookingexam.data.User;
 
 public interface RegisterContract {
     interface View {

@@ -3,7 +3,7 @@ package com.svalero.bookingexam.feature.custom_search;
 import android.os.AsyncTask;
 
 import com.svalero.bookingexam.BuildConfig;
-import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.utils.Post;
 
 import org.json.JSONArray;

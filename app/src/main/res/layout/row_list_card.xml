@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/rowListCard"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <ImageView
+                android:id="@+id/ivFoto"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:weightSum="100"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tvNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="30"
+                    android:paddingLeft="12dp"
+                    android:gravity="center_vertical"
+                    tools:text="Nombre Hotel"
+                    android:textStyle="bold"
+                    android:textSize="26dp"/>
+
+                <TextView
+                    android:id="@+id/tvNombreLocalidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="20"
+                    android:paddingLeft="12dp"
+                    android:gravity="center_vertical"
+                    tools:text="Nombre Localidad"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:paddingLeft="12dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/category_title"/>
+
+                    <TextView
+                        android:id="@+id/tvEstrellas"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingLeft="5dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        tools:text="nº" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/stars_title" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:paddingLeft="12dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/rate_title"/>
+
+                    <TextView
+                        android:id="@+id/tvPuntuacion"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:paddingLeft="5dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/points_title"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="15"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:paddingLeft="12dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/average_price_title"/>
+
+                    <TextView
+                        android:id="@+id/tvPrecio"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:paddingLeft="5dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        tools:text="Precio"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/prize_title" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

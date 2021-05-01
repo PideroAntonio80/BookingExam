@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.User;
+import com.svalero.bookingexam.data.User;
 import com.svalero.bookingexam.feature.register.RegisterActivity;
 import com.svalero.bookingexam.feature.reservation.ReservationActivity;
 
@@ -84,7 +84,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 user.setEmail(userEmail);
                 user.setPassword(userPassword);
 
-                // Comprobar que no deja campos vacíos
                 if(userEmail.isEmpty() || userPassword.isEmpty()) {
                     String infoMessage = "Debes rellenar los campos email y password";
                     info(infoMessage);
@@ -136,7 +135,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void successLogin(User user) {
         if (option.equals("fromRoomAdapter")) {
-            Toast.makeText(this, "Ultimo paso " + user.getName(), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getBaseContext(), ReservationActivity.class);
             intent.putExtra("id_user", String.valueOf(user.getId()));
             intent.putExtra("user_name", String.valueOf(user.getName()));
@@ -150,7 +148,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             intent.putExtra("option", option);
             startActivity(intent);
         } else if(option.equals("register")) {
-            Toast.makeText(this, "Ultimo paso " + user.getName(), Toast.LENGTH_LONG).show();
             Intent intentR = new Intent(getBaseContext(), ReservationActivity.class);
             intentR.putExtra("id_user_r", String.valueOf(user.getId()));
             intentR.putExtra("user_name_r", String.valueOf(user.getName()));
@@ -168,7 +165,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void failureLogin(String message) {
-        //Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         tilEmail.setError("Usuario o Password Incorrectos");
     }
 }

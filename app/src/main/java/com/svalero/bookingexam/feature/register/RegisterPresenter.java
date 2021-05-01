@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.register;
 
-import com.svalero.bookingexam.data.models.User;
+import com.svalero.bookingexam.data.User;
 
 public class RegisterPresenter implements RegisterContract.Presenter {
     private RegisterContract.View vista;

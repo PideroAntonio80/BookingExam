@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.Hotel;
 
 import java.util.ArrayList;
 
@@ -17,7 +16,6 @@ public class BookActivity extends AppCompatActivity implements BookContract.View
     private RecyclerView recycler;
     private BookPresenter bookPresenter;
     private RecyclerView.LayoutManager lManager;
-    private DividerItemDecoration divider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +38,9 @@ public class BookActivity extends AppCompatActivity implements BookContract.View
 
         ListAdapterBook listAdapterBook = new ListAdapterBook(hotels);
         listAdapterBook.notifyDataSetChanged();
-        divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        /*divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         divider.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));
-        recycler.addItemDecoration(divider);
+        recycler.addItemDecoration(divider);*/
         recycler.setAdapter(listAdapterBook);
     }
 

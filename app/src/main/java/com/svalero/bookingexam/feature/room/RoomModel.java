@@ -3,8 +3,8 @@ package com.svalero.bookingexam.feature.room;
 import android.os.AsyncTask;
 
 import com.svalero.bookingexam.BuildConfig;
-import com.svalero.bookingexam.data.models.Hotel;
-import com.svalero.bookingexam.data.models.Room;
+import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.data.Room;
 import com.svalero.bookingexam.utils.Post;
 
 import org.json.JSONArray;

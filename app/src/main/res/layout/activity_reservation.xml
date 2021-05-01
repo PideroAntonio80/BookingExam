@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:paddingLeft="12dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:text="@string/thanks_title"
             android:textSize="18sp"
@@ -37,17 +38,20 @@
             android:gravity="center_vertical"
             tools:text="Johnny"
             android:textSize="18sp"
+            android:textStyle="bold"
             android:textColor="@color/colorBlack"/>
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tvFraseFinReserva"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
         android:textColor="@color/colorBlack"
-        android:text="@string/fill_data_title"
+        tools:text="Pulse finalizar para reservar"
         android:textSize="25dp"
+        android:textStyle="bold"
         android:gravity="center"/>
 
     <LinearLayout
@@ -63,6 +67,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2.5"
             android:paddingLeft="12dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:text="@string/location_title"
             android:textColor="@color/colorBlack"/>
@@ -75,6 +80,7 @@
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             tools:text="Nombre Localidad"
+            android:textStyle="bold"
             android:textColor="@color/colorBlack"/>
 
     </LinearLayout>
@@ -91,6 +97,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2.5"
             android:paddingLeft="12dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:text="@string/hotel_title"
             android:textColor="@color/colorBlack"/>
@@ -100,6 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="7.5"
+            android:textStyle="bold"
             android:paddingLeft="5dp"
             android:gravity="center_vertical"
             tools:text="Nombre Hotel"
@@ -120,6 +128,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2.5"
             android:paddingLeft="12dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:text="@string/room_title"
             android:textColor="@color/colorBlack"/>
@@ -130,6 +139,7 @@
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:paddingLeft="5dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             tools:text="nº"
             android:textColor="@color/colorBlack"/>
@@ -148,6 +158,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2.5"
             android:paddingStart="12dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:text="@string/nights_title"
             android:textColor="@color/colorBlack"/>
@@ -158,6 +169,7 @@
             android:layout_height="match_parent"
             android:layout_weight="7.5"
             android:paddingStart="5dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:inputType="number"
             android:textSize="15sp"
@@ -169,7 +181,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_weight="6.5"
         android:orientation="horizontal"
         android:background="@color/colorLightBlue"
         android:weightSum="10">
@@ -181,6 +193,7 @@
             android:paddingLeft="12dp"
             android:gravity="center_vertical"
             android:text="@string/reservation_num_person_title"
+            android:textStyle="bold"
             android:textColor="@color/colorBlack"/>
 
         <EditText
@@ -188,11 +201,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
-            android:paddingLeft="5dp"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|bottom"
             android:inputType="number"
-            tools:text="nº"
-            android:textColor="@color/colorBlack"/>
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            tools:text="nº" />
 
     </LinearLayout>
 
@@ -246,6 +260,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2.5"
             android:paddingStart="12dp"
+            android:textStyle="bold"
             android:gravity="center_vertical"
             android:text="@string/reservation_total_prize_title"
             android:textColor="@color/colorBlack"/>
@@ -259,6 +274,7 @@
             android:gravity="center_vertical"
             android:inputType="number"
             android:textSize="15sp"
+            android:textStyle="bold"
             tools:text="$"
             android:textColor="@color/colorBlack"/>
 
@@ -267,7 +283,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="14"
+        android:layout_weight="13.5"
         android:weightSum="10"
         android:orientation="horizontal"
         android:gravity="center">

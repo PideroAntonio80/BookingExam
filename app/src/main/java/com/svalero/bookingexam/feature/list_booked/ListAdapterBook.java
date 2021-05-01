@@ -6,16 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.svalero.bookingexam.BuildConfig;
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.feature.description.DescriptionActivity;
 
 import java.util.ArrayList;
@@ -31,13 +31,13 @@ public class ListAdapterBook extends RecyclerView.Adapter<com.svalero.bookingexa
         public TextView nombreLocalidad;
         public TextView reservas;
         public Context context;
-        public LinearLayout rowList;
+        public CardView rowList;
 
         public BookViewHolder(View v){
             super(v);
             context = v.getContext();
-            rowList = v.findViewById(R.id.rowBookList);
-            fotoHotel = (ImageView) v.findViewById(R.id.ivFoto);
+            rowList = v.findViewById(R.id.rowBookHotelsListCard);
+            fotoHotel = (ImageView) v.findViewById(R.id.ivFotoBook);
             nombreHotel = (TextView) v.findViewById(R.id.tvNombre);
             nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidad);
             reservas = (TextView) v.findViewById(R.id.tvEstrellas);
@@ -60,7 +60,7 @@ public class ListAdapterBook extends RecyclerView.Adapter<com.svalero.bookingexa
     @NonNull
     @Override
     public com.svalero.bookingexam.feature.list_booked.ListAdapterBook.BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_book_hotels, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_book_hotels_list_card, parent,false);
 
         return new com.svalero.bookingexam.feature.list_booked.ListAdapterBook.BookViewHolder(v);
     }

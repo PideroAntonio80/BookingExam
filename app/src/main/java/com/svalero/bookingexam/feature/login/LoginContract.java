@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.login;
 
-import com.svalero.bookingexam.data.models.User;
+import com.svalero.bookingexam.data.User;
 
 public interface LoginContract {
     interface View {

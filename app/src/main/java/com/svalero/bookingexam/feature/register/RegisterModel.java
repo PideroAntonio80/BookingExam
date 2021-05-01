@@ -3,7 +3,7 @@ package com.svalero.bookingexam.feature.register;
 import android.os.AsyncTask;
 
 import com.svalero.bookingexam.BuildConfig;
-import com.svalero.bookingexam.data.models.User;
+import com.svalero.bookingexam.data.User;
 import com.svalero.bookingexam.utils.Post;
 
 import org.json.JSONArray;

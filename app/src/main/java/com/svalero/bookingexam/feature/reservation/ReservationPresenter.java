@@ -1,6 +1,6 @@
 package com.svalero.bookingexam.feature.reservation;
 
-import com.svalero.bookingexam.data.models.BookingRoom;
+import com.svalero.bookingexam.data.BookingRoom;
 
 public class ReservationPresenter implements ReservationContract.Presenter {
     private ReservationContract.View vista;

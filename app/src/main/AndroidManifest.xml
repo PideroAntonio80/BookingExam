@@ -20,7 +20,7 @@
         <activity android:name=".feature.list_booked.BookActivity" />
         <activity android:name=".feature.description.DescriptionActivity" />
         <activity android:name=".feature.filter.FilterActivity" /> <!-- <activity android:name=".feature.list_hotels.ListHotelsActivity" /> -->
-        <activity android:name=".feature.list_hotels.ListHotelsActivity" />
+        <activity android:name=".feature.list_hotels.view.ListHotelsActivity" />
         <activity android:name=".feature.login.LoginActivity" />
         <activity android:name=".feature.MainActivity" />
         <activity android:name=".feature.SplashActivity">

@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.Room;
+import com.svalero.bookingexam.data.Room;
 import com.svalero.bookingexam.feature.login.LoginActivity;
 
 import java.util.ArrayList;
@@ -32,12 +32,12 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         public TextView capacidad;
         public TextView precio;
         public Context context;
-        public LinearLayout rowRoom;
+        public CardView rowRoom;
 
         public RoomViewHolder(View v){
             super(v);
             context = v.getContext();
-            rowRoom = v.findViewById(R.id.rowRoom);
+            rowRoom = v.findViewById(R.id.rowRoomCard);
             nombreHotel = (TextView) v.findViewById(R.id.tvNombreHotelRoom);
             nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidadRoom);
             numeroRoom = (TextView) v.findViewById(R.id.tvNumeroRoom);
@@ -72,7 +72,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     @NonNull
     @Override
     public RoomAdapter.RoomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_room, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_room_card, parent,false);
 
         return new RoomAdapter.RoomViewHolder(v);
     }
@@ -80,8 +80,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     @Override
     public void onBindViewHolder(@NonNull RoomAdapter.RoomViewHolder holder, int position) {
         Room room = listRooms.get(position);
-        /*String urlImage = BuildConfig.URL_SERVER + "images/" + hotel.getFoto() + ".png";
-        Picasso.get().load(urlImage).into(holder.fotoHotel);*/
         holder.nombreHotel.setText(room.getNombreHotel());
         holder.nombreLocalidad.setText(room.getNombreLocalidad());
         holder.numeroRoom.setText(String.valueOf(room.getIdRoom()));

@@ -39,7 +39,6 @@
     <string name="room_title">Room:</string>
     <string name="hotel_title">Hotel</string>
     <string name="location_title">Location</string>
-    <string name="fill_data_title">Fill data</string>
     <string name="thanks_title">Thanks Enjoy your trip</string>
     <string name="points_title">Rate</string>
     <string name="prize_title">Dollars</string>
@@ -51,4 +50,13 @@
     <string name="reservation_num_person_title">Number of persons:</string>
     <string name="reservation_total_prize_title">Precio Total:</string>
     <string name="activity_list_hotels_data_error">Error al obtenr los datos</string>
+    <string name="main_navigation_bottom_category">Category</string>
+    <string name="main_navigation_bottom_precio_ascendente">Ascend</string>
+    <string name="main_navigation_bottom_precio_descendente">Descend</string>
+    <string name="main_navigation_bottom_favoritos">Favourites</string>
+    <string name="overflow_item_busqueda">Busqueda</string>
+    <string name="overflow_item_todos_hoteles">Todos Hoteles</string>
+    <string name="overflow_item_mas_reservados">Hoteles mas reservados</string>
+    <string name="final_message_completed_data">Push Finish to complete</string>
+    <string name="final_message_incompleted_data">Fill data and push finish </string>
 </resources>

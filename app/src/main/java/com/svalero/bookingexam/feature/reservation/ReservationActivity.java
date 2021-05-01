@@ -3,6 +3,7 @@ package com.svalero.bookingexam.feature.reservation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,14 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.BookingRoom;
+import com.svalero.bookingexam.data.BookingRoom;
 import com.svalero.bookingexam.feature.FinalSplashActivity;
 import com.svalero.bookingexam.utils.customui.DatePickerFragment;
 
 import java.sql.Date;
 
 public class ReservationActivity extends AppCompatActivity implements ReservationContract.View {
-    private TextView nombreCliente, nombreLocalidad, nombreHotel, numeroHabitacion, numeroNoches, precioTotal;
+    private TextView nombreCliente, nombreLocalidad, nombreHotel, numeroHabitacion, numeroNoches, precioTotal, fraseFinal;
     private EditText numPersons;
     private Button fechaEntrada, fechaSalida, finalizar;
     private ReservationPresenter reservationPresenter;
@@ -67,6 +68,9 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
             numeroHabitacion.setText(String.valueOf(roomId));
             nombreHotel.setText(miHotel);
             nombreLocalidad.setText(miLocalidad);
+
+            setFinalMessage();
+
             if (fechaIn != null) {
                 fechaEntrada.setText(fechaIn);
             }
@@ -82,7 +86,6 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
             }
             if(precio != null && numPers != null && nights != null) {
                 factura = prize(Double.parseDouble(precio), Integer.parseInt(numPers) , Integer.parseInt(nights));
-                System.out.println(factura);
                 precioTotal.setText(String.valueOf(factura));
             }
         }
@@ -91,6 +94,12 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
             numeroHabitacion.setText(String.valueOf(roomIdR));
             nombreHotel.setText(miHotelR);
             nombreLocalidad.setText(miLocalidadR);
+
+            setFinalMessage();
+
+            if (fechaIn != null) {
+                fraseFinal.setText("Pulse finalizar para reservar");
+            }
             if (fechaInR != null) {
                 fechaEntrada.setText(fechaInR);
             }
@@ -103,10 +112,12 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
             }
             if(numPersR != null) {
                 numPersons.setText(numPersR);
+            } else {
+                fechaEntrada.setActivated(false);
+                fechaSalida.setActivated(false);
             }
             if(precioR != null && numPersR != null && nightsR != null) {
                 facturaR = prize(Double.parseDouble(precioR), Integer.parseInt(numPersR) , Integer.parseInt(nightsR));
-                System.out.println(facturaR);
                 precioTotal.setText(String.valueOf(facturaR));
             }
         }
@@ -114,9 +125,6 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
         initListeners();
 
         reservationPresenter = new ReservationPresenter(this);
-
-        //System.out.println(Date.valueOf(fechaIn).getTime());
-        //System.out.println(numeroDiasEntreDosFechas(Date.valueOf(fechaIn), Date.valueOf(fechaOut)));
     }
 
     public static int numeroDiasEntreDosFechas(Date fecha1, Date fecha2){
@@ -136,6 +144,7 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
     }
 
     public void initComponents() {
+        fraseFinal = findViewById(R.id.tvFraseFinReserva);
         nombreCliente = findViewById(R.id.tvCliente);
         nombreLocalidad = findViewById(R.id.tvLocalidadReserva);
         nombreHotel = findViewById(R.id.tvHotelReserva);
@@ -201,6 +210,7 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
                         nightsR = String.valueOf(numeroDiasEntreDosFechas(Date.valueOf((String) fechaEntrada.getText()), Date.valueOf((String) fechaSalida.getText())));
                         numPers = String.valueOf(numPersons.getText());
                         numPersR = String.valueOf(numPersons.getText());
+
                         if(option.equals("fromRoomAdapter")) {
                             numeroNoches.setText(nights);
                             factura = prize(Double.parseDouble(precio), Integer.parseInt(numPers) , Integer.parseInt(nights));
@@ -211,7 +221,6 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
                             facturaR = prize(Double.parseDouble(precioR), Integer.parseInt(numPersR) , Integer.parseInt(nightsR));
                             precioTotal.setText(String.valueOf(facturaR));
                         }
-
                     }
                 });
                 calendarioOut.show(getSupportFragmentManager(), "fechaSalida");
@@ -264,7 +273,15 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
 
             }
         });
+    }
 
+    public void setFinalMessage() {
+        Resources res = getResources();
+        String completedData = res.getString(R.string.final_message_completed_data);
+        String incompletedData = res.getString(R.string.final_message_incompleted_data);
+        String option = "";
+        option = (fechaIn == null) ? incompletedData : completedData;
+        fraseFinal.setText(option);
     }
 
     @Override

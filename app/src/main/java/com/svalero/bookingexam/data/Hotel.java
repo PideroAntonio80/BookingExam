@@ -1,14 +1,17 @@
-package com.svalero.bookingexam.data.models;
+package com.svalero.bookingexam.data;
+
+import com.google.gson.annotations.SerializedName;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Hotel {
+public class Hotel implements Serializable {
 
     private static final String ID_HOTEL = "idHotel";
     private static final String NOMBRE = "nombre";
@@ -24,9 +27,13 @@ public class Hotel {
     private int idHotel;
     private String nombre;
     private String descripcion;
+    @SerializedName("id_location")
     private int idLocation;
+    @SerializedName("url_foto")
     private String foto;
+    @SerializedName("nombre_location")
     private String nombre_localidad;
+    @SerializedName("numReservas")
     private int numeroReservas;
     private double puntuacion;
     private double precio_medio;
@@ -130,7 +137,6 @@ public class Hotel {
 
         return list;
     }
-
     public static ArrayList<Hotel> getList() {
         return list;
     }
@@ -182,6 +188,26 @@ public class Hotel {
                 return new Double(h2.getPuntuacion()).compareTo(new Double(h1.getPuntuacion()));
             }
         });
+        return list;
+    }
+
+    public static ArrayList<Hotel> getListaDestacados(ArrayList<Hotel> list) {
+        Collections.sort(list, (h1, h2) -> new Integer(h2.getEstrellas()).compareTo(new Integer(h1.getEstrellas())));
+        return list;
+    }
+
+    public static ArrayList<Hotel> getListaPrecioAsc(ArrayList<Hotel> list) {
+        Collections.sort(list, (h1, h2) -> new Double(h1.getPrecio_medio()).compareTo(new Double(h2.getPrecio_medio())));
+        return list;
+    }
+
+    public static ArrayList<Hotel> getListaPrecioDesc(ArrayList<Hotel> list) {
+        Collections.sort(list, (h1, h2) -> new Double(h2.getPrecio_medio()).compareTo(new Double(h1.getPrecio_medio())));
+        return list;
+    }
+
+    public static ArrayList<Hotel> getListaPuntos(ArrayList<Hotel> list) {
+        Collections.sort(list, (h1, h2) -> new Double(h2.getPuntuacion()).compareTo(new Double(h1.getPuntuacion())));
         return list;
     }
 

@@ -38,7 +38,6 @@
     <string name="room_title">Habitacion:</string>
     <string name="hotel_title">Hotel</string>
     <string name="location_title">Localidad</string>
-    <string name="fill_data_title">Complete los datos que faltan</string>
     <string name="thanks_title">Gracias por su Reserva</string>
     <string name="points_title">Puntos</string>
     <string name="prize_title">Euros</string>
@@ -50,4 +49,13 @@
     <string name="reservation_num_person_title">Número de personas:</string>
     <string name="reservation_total_prize_title">Precio Total:</string>
     <string name="activity_list_hotels_data_error">Error al obtenr los datos</string>
+    <string name="main_navigation_bottom_category">Categoría</string>
+    <string name="main_navigation_bottom_precio_ascendente">Ascendente</string>
+    <string name="main_navigation_bottom_precio_descendente">Descendente</string>
+    <string name="main_navigation_bottom_favoritos">Favoritos</string>
+    <string name="overflow_item_busqueda">Busqueda</string>
+    <string name="overflow_item_todos_hoteles">Todos Hoteles</string>
+    <string name="overflow_item_mas_reservados">Hoteles mas reservados</string>
+    <string name="final_message_completed_data">Pulse finalizar para reservar</string>
+    <string name="final_message_incompleted_data">Complete los datos que faltan</string>
 </resources>

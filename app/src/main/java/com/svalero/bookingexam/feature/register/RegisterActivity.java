@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.User;
+import com.svalero.bookingexam.data.User;
 import com.svalero.bookingexam.feature.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterContract.View {

@@ -6,16 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.svalero.bookingexam.BuildConfig;
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.feature.description.DescriptionActivity;
 
 import java.util.ArrayList;
@@ -26,7 +26,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearc
     public static String fechaIn;
     public static String fechaOut;
 
-    /*Tantos elementos como objetos quiera mostrar en la fila*/
     public static class HotelSearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public ImageView fotoHotel;
@@ -36,12 +35,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearc
         public TextView puntuacion;
         public TextView precio;
         public Context context;
-        public LinearLayout rowList;
+        public CardView rowListCard;
 
         public HotelSearchViewHolder(View v){
             super(v);
             context = v.getContext();
-            rowList = v.findViewById(R.id.rowList);
+            rowListCard = v.findViewById(R.id.rowListCard);
             fotoHotel = (ImageView) v.findViewById(R.id.ivFoto);
             nombreHotel = (TextView) v.findViewById(R.id.tvNombre);
             nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidad);
@@ -72,7 +71,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearc
     @NonNull
     @Override
     public SearchAdapter.HotelSearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_card, parent,false);
 
         return new SearchAdapter.HotelSearchViewHolder(v);
     }
@@ -87,7 +86,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearc
         holder.categoria.setText(String.valueOf(hotel.getEstrellas()));
         holder.puntuacion.setText(String.valueOf(hotel.getPuntuacion()));
         holder.precio.setText(String.valueOf(hotel.getPrecio_medio()));
-
     }
 
     @Override

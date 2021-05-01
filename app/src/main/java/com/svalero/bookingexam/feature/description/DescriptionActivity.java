@@ -1,30 +1,27 @@
 package com.svalero.bookingexam.feature.description;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.squareup.picasso.Picasso;
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.feature.room.RoomActivity;
 
-public class DescriptionActivity extends AppCompatActivity implements DescriptionContract.View {
+public class DescriptionActivity extends AppCompatActivity {
 
     private ImageView ivFotoDescripcion;
     private TextView tvNombreDescripcion, tvLocalizacion, tvReservado, tvDescripcion, tvCategoria, tvPuntos, tvPrecio;
     private Button bSeleccionar;
 
-    private DescriptionPresenter descriptionPresenter;
+    //private DescriptionPresenter descriptionPresenter;
     private Hotel hotel;
-    private Hotel hotelDescrito;
-    private String nombreHotel;
-    private String nombreLocalidad;
+    //private Hotel hotelDescrito;
     private String numPers;
     private String fechaIn;
     private String fechaOut;
@@ -38,29 +35,27 @@ public class DescriptionActivity extends AppCompatActivity implements Descriptio
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            nombreHotel = bundle.getString("nombre_hotel");
-            nombreLocalidad = bundle.getString("nombre_localidad");
+            hotel = (Hotel) bundle.getSerializable("my_hotel");
             numPers = bundle.getString("num_person");
             fechaIn = bundle.getString("fecha_in");
             fechaOut = bundle.getString("fecha_out");
         }
 
-        hotel = new Hotel();
-        hotel.setNombre(nombreHotel);
+        showHotel();
 
-        descriptionPresenter = new DescriptionPresenter(this);
-        descriptionPresenter.getOneHotel(hotel);
+        /* hotel = new Hotel();
+        hotel.setNombre(nombreHotel);*/
 
-        bSeleccionar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), RoomActivity.class);
-                intent.putExtra("nombre_hotel", nombreHotel);
-                intent.putExtra("num_pers", numPers);
-                intent.putExtra("date_in", fechaIn);
-                intent.putExtra("date_out", fechaOut);
-                startActivity(intent);
-            }
+        /*descriptionPresenter = new DescriptionPresenter(this);
+        descriptionPresenter.getOneHotel(hotel);*/
+
+        bSeleccionar.setOnClickListener(v -> {
+            Intent intent = new Intent(getBaseContext(), RoomActivity.class);
+            intent.putExtra("nombre_hotel", hotel.getNombre());
+            intent.putExtra("num_pers", numPers);
+            intent.putExtra("date_in", fechaIn);
+            intent.putExtra("date_out", fechaOut);
+            startActivity(intent);
         });
     }
 
@@ -76,9 +71,8 @@ public class DescriptionActivity extends AppCompatActivity implements Descriptio
         bSeleccionar = findViewById(R.id.bSeleccionar);
     }
 
-    @Override
-    public void showHotel(Hotel hotel) {
-        this.hotelDescrito = hotel;
+    public void showHotel() {
+        //this.hotelDescrito = hotel;
         String urlImage = "http://192.168.1.142:8090/BookingWeb/images/" + hotel.getFoto() + ".png";
         Picasso.get().load(urlImage).into(ivFotoDescripcion);
         tvNombreDescripcion.setText(hotel.getNombre());

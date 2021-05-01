@@ -3,7 +3,7 @@ package com.svalero.bookingexam.feature.list_hotels;
 import android.os.AsyncTask;
 
 import com.svalero.bookingexam.BuildConfig;
-import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.utils.Post;
 
 import org.json.JSONArray;
@@ -11,8 +11,8 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListHotelsModel implements ListHotelsContract.Model{
-
+public class ListHotelsModel {
+/*
     private static final String URL = BuildConfig.URL_SERVER + "Controller";
     private ArrayList<Hotel> listArrayHotels;
     OnLstHotelsListener onLstHotelsListener;
@@ -29,9 +29,9 @@ public class ListHotelsModel implements ListHotelsContract.Model{
         param.put("ACTION", "HOTEL.FIND_ALL");
         DataCollector dataCollector = new DataCollector(param);
         dataCollector.execute(URL);
-    }
+    }*/
 
-    class DataCollector extends AsyncTask<String, Integer, ArrayList<Hotel>> {
+    /*class DataCollector extends AsyncTask<String, Integer, ArrayList<Hotel>> {
         private HashMap<String, String> parametros = null;
 
         public DataCollector( HashMap<String, String> parametros) {
@@ -62,6 +62,6 @@ public class ListHotelsModel implements ListHotelsContract.Model{
             }
 
         }
-    }
+    }*/
 
 }

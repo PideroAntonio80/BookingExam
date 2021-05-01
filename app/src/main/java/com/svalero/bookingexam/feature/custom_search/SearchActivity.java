@@ -1,7 +1,6 @@
 package com.svalero.bookingexam.feature.custom_search;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,7 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.svalero.bookingexam.R;
-import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.Hotel;
 
 import java.util.ArrayList;
 
@@ -17,7 +16,6 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
 
     private RecyclerView recycler;
     private RecyclerView.LayoutManager lManager;
-    private DividerItemDecoration divider;
     private SearchPresenter searchPresenter;
     private String localidad;
     private String numPers;
@@ -54,9 +52,6 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
 
         SearchAdapter searchAdapter = new SearchAdapter(hotels, numPers, fechaIn, fechaOut);
         searchAdapter.notifyDataSetChanged();
-        divider = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        divider.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));
-        recycler.addItemDecoration(divider);
         recycler.setAdapter(searchAdapter);
     }
 

@@ -1,22 +1,23 @@
 package com.svalero.bookingexam.feature.list_hotels;
 
-import com.svalero.bookingexam.data.models.Hotel;
+import com.svalero.bookingexam.data.Hotel;
+import com.svalero.bookingexam.network.BookingNetwork;
 
 import java.util.ArrayList;
 
 public class ListHotelsPresenter implements ListHotelsContract.Presenter{
 
-    private ListHotelsModel listHotelsModel;
+    private BookingNetwork network;
     private ListHotelsContract.View vista;
 
     public ListHotelsPresenter(ListHotelsContract.View vista) {
         this.vista = vista;
-        this.listHotelsModel = new ListHotelsModel(this);
+        this.network = new BookingNetwork();
     }
 
     @Override
     public void getHotels() {
-        listHotelsModel.getHotelsWS(new ListHotelsContract.Model.OnLstHotelsListener() {
+        network.getAllHotels(new ListHotelsContract.Model.OnLstHotelsListener() {
             @Override
             public void resolve(ArrayList<Hotel> hotels) {
                 vista.success(hotels);
