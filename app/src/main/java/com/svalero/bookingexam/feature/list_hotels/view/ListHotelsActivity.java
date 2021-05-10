@@ -2,6 +2,7 @@ package com.svalero.bookingexam.feature.list_hotels.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.data.Hotel;
-import com.svalero.bookingexam.feature.MainActivity;
+import com.svalero.bookingexam.feature.main.MainActivity;
 import com.svalero.bookingexam.feature.list_hotels.ListHotelsContract;
 import com.svalero.bookingexam.feature.list_hotels.ListHotelsPresenter;
 
@@ -35,10 +36,15 @@ public class ListHotelsActivity extends AppCompatActivity implements ListHotelsC
 
     private ArrayList<Hotel> hotels;
 
+    private static String TAG = ListHotelsActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_hotels);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         initComponents();
 
@@ -57,7 +63,6 @@ public class ListHotelsActivity extends AppCompatActivity implements ListHotelsC
                 listHotelsPresenter.getHotels();
             }
         });
-
     }
 
     public void initComponents() {
@@ -91,6 +96,7 @@ public class ListHotelsActivity extends AppCompatActivity implements ListHotelsC
                 switch (item.getItemId()){
                     case R.id.menu_nav_hotels:
                         showFragment(CategoryHotelsFragment.newInstance(new ArrayList<Hotel>(hotels)));
+                        item.getActionView();
                         break;
                     case R.id.menu_nav_precio_asc:
                         showFragment(PrizeAscHotelsFragment.newInstance(new ArrayList<Hotel>(hotels)));
@@ -109,6 +115,7 @@ public class ListHotelsActivity extends AppCompatActivity implements ListHotelsC
 
     @Override
     public void success(ArrayList<Hotel> hotels) {
+        Log.d(TAG, "Me devuelve lo que pido al web service" + hotels.get(0).getNombre() + ", " + hotels.get(1).getNombre() + ", etc.");
         fragmentContainer.setVisibility(View.VISIBLE);
         bottomNavigation.setVisibility(View.VISIBLE);
         loading.setVisibility(View.GONE);
@@ -122,9 +129,15 @@ public class ListHotelsActivity extends AppCompatActivity implements ListHotelsC
     @Override
 
     public void error(String message) {
+        Log.d(TAG, "Error al trer datos");
         layoutError.setVisibility(View.VISIBLE);
         fragmentContainer.setVisibility(View.GONE);
         bottomNavigation.setVisibility(View.GONE);
         loading.setVisibility(View.GONE);
+    }
+
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

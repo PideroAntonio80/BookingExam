@@ -11,12 +11,11 @@ public interface SearchContract {
     }
 
     interface Presenter {
-        void searchHotels(Hotel hotel);
+        void searchHotels(String location);
     }
 
     interface Model {
-        void searchHotelsWS(SearchContract.Model.OnSearchHotelsListener onSearchHotelsListener, Hotel hotel);
-        /*Programación Reactiva (Callback)*/
+        void searchHotelsWS(SearchContract.Model.OnSearchHotelsListener onSearchHotelsListener, String location);
         interface OnSearchHotelsListener{
             void resolve(ArrayList<Hotel> hotels);
             void reject(String error);

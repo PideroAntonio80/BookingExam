@@ -4,7 +4,7 @@ import com.svalero.bookingexam.data.Hotel;
 
 import java.util.ArrayList;
 
-public class BookContract {
+public interface BookContract {
     interface View {
         void successBookedHotels(ArrayList<Hotel> hotels);
         void error(String message);
@@ -15,9 +15,8 @@ public class BookContract {
     }
 
     interface Model {
-        /*Me tienes que mandar el Callback, camino de retorno*/
         void getBookedHotelsWS(BookContract.Model.OnBookListener onBookListener);
-        /*Programación Reactiva (Callback)*/
+
         interface OnBookListener{
             void resolve(ArrayList<Hotel> hotels);
             void reject(String error);

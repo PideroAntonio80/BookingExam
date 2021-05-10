@@ -1,11 +1,11 @@
 package com.svalero.bookingexam.feature.list_booked;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,35 +22,49 @@ import java.util.ArrayList;
 
 public class ListAdapterBook extends RecyclerView.Adapter<com.svalero.bookingexam.feature.list_booked.ListAdapterBook.BookViewHolder> {
     private ArrayList<Hotel> lstHotel;
+    private float estrellasCategoriaBooks;
 
-    /*Tantos elementos como objetos quiera mostrar en la fila*/
-    public static class BookViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class BookViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView fotoHotel;
         public TextView nombreHotel;
         public TextView nombreLocalidad;
-        public TextView reservas;
-        public Context context;
+        public RatingBar estrellasBooks;
+        public TextView puntuacionBooks;
+        public ImageView iconFavBooks;
+        public TextView reservasBooks;
+        public TextView precioBooks;
         public CardView rowList;
+        public boolean pushBooks = false;
+
+        public View view;
 
         public BookViewHolder(View v){
             super(v);
-            context = v.getContext();
+            this.view = v;
             rowList = v.findViewById(R.id.rowBookHotelsListCard);
             fotoHotel = (ImageView) v.findViewById(R.id.ivFotoBook);
-            nombreHotel = (TextView) v.findViewById(R.id.tvNombre);
-            nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidad);
-            reservas = (TextView) v.findViewById(R.id.tvEstrellas);
+            nombreHotel = (TextView) v.findViewById(R.id.tvNombreBook);
+            nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidadBook);
+            estrellasBooks = (RatingBar) v.findViewById(R.id.rbEstrellasBook);
+            puntuacionBooks = (TextView) v.findViewById(R.id.tvPuntuacionBook);
+            reservasBooks = (TextView) v.findViewById(R.id.tvNumberBooks);
+            precioBooks = (TextView) v.findViewById(R.id.tvPrecioBook);
+            iconFavBooks = (ImageView) v.findViewById(R.id.ivIconFavBook);
 
-            v.setOnClickListener(this);
+            iconFavBooks.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pushBooks = !pushBooks;
+                    if(pushBooks) {
+                        iconFavBooks.setImageResource(R.drawable.ic_row_card_list_favourite_full);
+                    } else {
+                        iconFavBooks.setImageResource(R.drawable.ic_row_card_list_favourite_gap);
+                    }
+                }
+            });
         }
 
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(context, DescriptionActivity.class);
-            intent.putExtra("nombre_hotel", nombreHotel.getText());
-            context.startActivity(intent);
-        }
     }
 
     public ListAdapterBook(ArrayList<Hotel> lstHotel) {
@@ -71,9 +85,20 @@ public class ListAdapterBook extends RecyclerView.Adapter<com.svalero.bookingexa
         String urlImage = BuildConfig.URL_SERVER + "images/" + hotel.getFoto() + ".png";
         Picasso.get().load(urlImage).into(holder.fotoHotel);
         holder.nombreHotel.setText(hotel.getNombre());
+        holder.puntuacionBooks.setText(String.valueOf(hotel.getPuntuacion()));
+        holder.reservasBooks.setText(String.valueOf(hotel.getNumeroReservas()));
         holder.nombreLocalidad.setText(hotel.getNombre_localidad());
-        holder.reservas.setText(String.valueOf(hotel.getNumeroReservas()));
-
+        holder.precioBooks.setText(String.valueOf(hotel.getPrecio_medio()));
+        estrellasCategoriaBooks = hotel.getEstrellas();
+        holder.estrellasBooks.setRating(estrellasCategoriaBooks);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.view.getContext(), DescriptionActivity.class);
+                intent.putExtra("my_hotel", hotel);
+                holder.view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

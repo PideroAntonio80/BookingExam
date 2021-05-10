@@ -1,11 +1,11 @@
 package com.svalero.bookingexam.feature.custom_search;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,42 +22,48 @@ import java.util.ArrayList;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearchViewHolder> {
     private ArrayList<Hotel> lstHotel;
+    private float estrellasCategoria;
     public static String numPers;
     public static String fechaIn;
     public static String fechaOut;
 
-    public static class HotelSearchViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class HotelSearchViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView fotoHotel;
         public TextView nombreHotel;
         public TextView nombreLocalidad;
-        public TextView categoria;
         public TextView puntuacion;
         public TextView precio;
-        public Context context;
+        public RatingBar estrellas;
         public CardView rowListCard;
+        public ImageView iconFav;
+        public boolean push = false;
+
+        public View view;
 
         public HotelSearchViewHolder(View v){
             super(v);
-            context = v.getContext();
+            this.view = v;
             rowListCard = v.findViewById(R.id.rowListCard);
             fotoHotel = (ImageView) v.findViewById(R.id.ivFoto);
             nombreHotel = (TextView) v.findViewById(R.id.tvNombre);
             nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidad);
-            categoria = (TextView) v.findViewById(R.id.tvEstrellas);
             puntuacion = (TextView) v.findViewById(R.id.tvPuntuacion);
             precio = (TextView) v.findViewById(R.id.tvPrecio);
-            v.setOnClickListener(this);
-        }
+            estrellas = (RatingBar) v.findViewById(R.id.rbEstrellas);
+            iconFav = (ImageView) v.findViewById(R.id.ivIconFav);
 
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(context, DescriptionActivity.class);
-            intent.putExtra("nombre_hotel", nombreHotel.getText());
-            intent.putExtra("num_person", SearchAdapter.numPers);
-            intent.putExtra("fecha_in", SearchAdapter.fechaIn);
-            intent.putExtra("fecha_out", SearchAdapter.fechaOut);
-            context.startActivity(intent);
+            iconFav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    push = !push;
+                    if(push) {
+                        iconFav.setImageResource(R.drawable.ic_row_card_list_favourite_full);
+                    } else {
+                        iconFav.setImageResource(R.drawable.ic_row_card_list_favourite_gap);
+                    }
+                }
+            });
         }
     }
 
@@ -83,9 +89,21 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.HotelSearc
         Picasso.get().load(urlImage).into(holder.fotoHotel);
         holder.nombreHotel.setText(hotel.getNombre());
         holder.nombreLocalidad.setText(hotel.getNombre_localidad());
-        holder.categoria.setText(String.valueOf(hotel.getEstrellas()));
         holder.puntuacion.setText(String.valueOf(hotel.getPuntuacion()));
         holder.precio.setText(String.valueOf(hotel.getPrecio_medio()));
+        estrellasCategoria = hotel.getEstrellas();
+        holder.estrellas.setRating(estrellasCategoria);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.view.getContext(), DescriptionActivity.class);
+                intent.putExtra("my_hotel", hotel);
+                intent.putExtra("num_person", SearchAdapter.numPers);
+                intent.putExtra("fecha_in", SearchAdapter.fechaIn);
+                intent.putExtra("fecha_out", SearchAdapter.fechaOut);
+                holder.view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

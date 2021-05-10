@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/colorBlue"
     android:weightSum="100"
+    android:background="@color/colorLightGrey"
+
     tools:context=".feature.register.RegisterActivity">
 
+    <ImageView
+        android:id="@+id/imageViewLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/logo_booking"
+        app:srcCompat="@drawable/logobueno" />
+
     <LinearLayout
+        android:id="@+id/llRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:background="@color/colorLightBlue">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/textView"
@@ -26,43 +34,42 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/bowlby_one_sc"
+            android:gravity="center"
             android:shadowColor="@color/colorBlack"
-            android:shadowRadius="15"
             android:shadowDx="5"
             android:shadowDy="5"
-            android:gravity="center"
+            android:shadowRadius="15"
             android:text="@string/register_title"
             android:textColor="@color/colorWhite"
             android:textSize="25sp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300sp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            app:boxStrokeColor="@color/colorWhite"
-            app:hintTextColor="@color/colorBlack"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
             app:boxBackgroundColor="@color/colorWhite"
-            >
+            app:boxStrokeColor="@color/colorWhite"
+            app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNombreReg"
                 android:layout_width="match_parent"
-                android:layout_gravity="center"
                 android:layout_height="match_parent"
-                android:hint="@string/register_name_title"/>
+                android:layout_gravity="center"
+                android:hint="@string/register_name_title" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300sp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:boxStrokeColor="@color/colorWhite"
-            app:hintTextColor="@color/colorBlack"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             app:boxBackgroundColor="@color/colorWhite"
-            >
+            app:boxStrokeColor="@color/colorWhite"
+            app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etApellidosReg"
@@ -72,57 +79,64 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300sp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:boxStrokeColor="@color/colorWhite"
-            app:hintTextColor="@color/colorBlack"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             app:boxBackgroundColor="@color/colorWhite"
-            >
+            app:boxStrokeColor="@color/colorWhite"
+            app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmailReg"
                 android:layout_width="match_parent"
-                android:layout_gravity="center"
                 android:layout_height="match_parent"
-                android:inputType="textEmailAddress"
-                android:hint="@string/email_title"/>
+                android:layout_gravity="center"
+                android:hint="@string/email_title"
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilRegisterPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300sp"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            app:boxStrokeColor="@color/colorWhite"
-            app:hintTextColor="@color/colorBlack"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxBackgroundColor="@color/colorWhite"
+            app:boxStrokeColor="@color/colorWhite"
             app:endIconMode="password_toggle"
-            >
+            app:errorEnabled="true"
+            app:hintTextColor="@color/colorBlack">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPasswordReg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/password_title"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btRegistro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             android:background="@drawable/button_border"
+            android:text="@string/register_button_title"
             android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:text="@string/register_button_title" />
+            android:textStyle="bold" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoadingRegistro"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
 
 </LinearLayout>

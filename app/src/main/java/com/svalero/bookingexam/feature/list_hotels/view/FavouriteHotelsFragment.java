@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.feature.list_hotels.ListAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FavouriteHotelsFragment extends Fragment {
 
@@ -25,12 +27,15 @@ public class FavouriteHotelsFragment extends Fragment {
     private ArrayList<Hotel> hotels;
     private ArrayList<Hotel> prizeFavouriteHotels;
 
+    private static String TAG = FavouriteHotelsFragment.class.getSimpleName();
+
     private static final String EXTRA_FAVOURITE_LIST = "param1";
 
     public FavouriteHotelsFragment() {
     }
 
     public static FavouriteHotelsFragment newInstance(ArrayList<Hotel> hotels) {
+        Log.d(TAG, "Nueva instancia de este fragment");
         FavouriteHotelsFragment fragment = new FavouriteHotelsFragment();
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_FAVOURITE_LIST, hotels);
@@ -54,7 +59,7 @@ public class FavouriteHotelsFragment extends Fragment {
 
         initComponents();
 
-        prizeFavouriteHotels = Hotel.getListaPuntos(hotels);
+        prizeFavouriteHotels = getListaPuntos(hotels);
 
         loadData(prizeFavouriteHotels);
 
@@ -73,5 +78,10 @@ public class FavouriteHotelsFragment extends Fragment {
         ListAdapter listAdapter = new ListAdapter(hotels);
         listAdapter.notifyDataSetChanged();
         recycler.setAdapter(listAdapter);
+    }
+
+    public ArrayList<Hotel> getListaPuntos(ArrayList<Hotel> list) {
+        Collections.sort(list, (h1, h2) -> new Double(h2.getPuntuacion()).compareTo(new Double(h1.getPuntuacion())));
+        return list;
     }
 }

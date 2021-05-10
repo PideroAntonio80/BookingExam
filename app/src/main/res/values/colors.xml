@@ -9,7 +9,14 @@
     <color name="colorPurple">#3912BD</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorBlue">#3333FF</color>
+    <color name="colorLightGrey">#EAEAED</color>
     <color name="colorLightBlue3">#4D83FF</color>
-    <color name="colorLightBlue">#99CCFF</color>
+    <color name="colorLightOrange">#FFCC34</color>
+    <color name="button_color">#1D61B5</color>
+    <color name="logo_booking">#003580</color>
+    <color name="color_cabecera">#0157D3</color>
+    <color name="color_verde">#3D8740</color>
+    <color name="color_verde_claro">#6CD170</color>
+    <color name="color_views">#8E8787</color>
+    <color name="color_azul_claro">#1D61B5</color>
 </resources>

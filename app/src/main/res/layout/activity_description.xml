@@ -1,209 +1,435 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100"
-    android:orientation="vertical"
-    android:background="@color/colorLightBlue"
     tools:context=".feature.description.DescriptionActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <ImageView
-        android:id="@+id/ivFotoDescripcion"
+        <include layout="@layout/toolbar"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="40"
-        android:layout_marginTop="5dp"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        android:layout_height="match_parent"
+        android:background="@color/colorLightGrey"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <TextView
-        android:id="@+id/tvNombreDescripcion"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:gravity="center"
-        android:textSize="26dp"
-        tools:text="Nombre"/>
-
-    <TextView
-        android:id="@+id/tvLocation"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:gravity="center"
-        tools:text="Localidad"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_marginBottom="8dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:paddingLeft="15dp"
-            android:gravity="center_vertical"
-            android:text="@string/booked_title"/>
-
-        <TextView
-            android:id="@+id/tvReservado"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingLeft="5dp"
-            android:gravity="center_vertical"
-            tools:text="nº" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="6"
-            android:gravity="center_vertical"
-            android:text="@string/times_title"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="15"
-        android:weightSum="10"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:paddingLeft="15dp"
-            android:text="@string/description_title"/>
-
-        <TextView
-            android:id="@+id/tvDescripcion"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7"
-            android:paddingLeft="5dp"
-            android:paddingRight="15dp"
-            tools:text="TextView" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="horizontal"
-        android:weightSum="10">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:paddingLeft="15dp"
-            android:gravity="center_vertical"
-            android:text="@string/category_title"/>
-
-        <TextView
-            android:id="@+id/tvEstrellasDescript"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:paddingLeft="5dp"
-            android:gravity="center_vertical"
-            tools:text="nº" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="6.5"
-            android:gravity="center_vertical"
-            android:text="@string/stars_title" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="horizontal"
-        android:weightSum="10">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:paddingLeft="15dp"
-            android:gravity="center_vertical"
-            android:text="@string/rate_title"/>
-
-        <TextView
-            android:id="@+id/tvPuntos"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7"
-            android:paddingLeft="5dp"
-            android:gravity="center_vertical"
-            tools:text="Puntos"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="horizontal"
-        android:weightSum="10">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:paddingLeft="15dp"
-            android:gravity="center_vertical"
-            android:text="@string/average_price_title"/>
-
-        <TextView
-            android:id="@+id/tvPrecioMedio"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.1"
-            android:paddingLeft="5dp"
-            android:gravity="center_vertical"
-            tools:text="Precio"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5.9"
-            android:gravity="center_vertical"
-            android:text="@string/euros_title" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="12"
-        android:weightSum="10"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/bSeleccionar"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:text="@string/check_title"
-            android:background="@drawable/button_border"
-            android:textColor="@color/colorWhite"/>
+            android:orientation="vertical"
+            android:background="@color/colorLightGrey">
 
-    </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/standar_margin_top"
+                android:background="@color/colorWhite">
 
-</LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"/>
+
+                <TextView
+                    android:id="@+id/tvNombreDescripcion"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/standar_text_size"
+                    android:textStyle="bold"
+                    tools:text="Nombre Hotel" />
+
+                <TextView
+                    android:id="@+id/tvIcWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvNombreDescripcion"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    app:drawableStartCompat="@drawable/ic_description_wifi" />
+
+                <TextView
+                    android:id="@+id/tvWifiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_description_wifi_gratis"
+                    android:layout_below="@id/tvIcWifi"
+                    android:layout_toEndOf="@id/tvNombreDescripcion"
+                    android:layout_marginStart="5dp"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/tvIcBath"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvIcWifi"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="50dp"
+                    app:drawableStartCompat="@drawable/ic_description_bath" />
+
+                <TextView
+                    android:id="@+id/tvBathText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_description_bath"
+                    android:layout_below="@id/tvIcWifi"
+                    android:layout_toEndOf="@id/tvWifiText"
+                    android:layout_marginStart="15dp"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/tvIcMount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvIcBath"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="48dp"
+                    app:drawableStartCompat="@drawable/ic_description_mountain" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_description_vistas"
+                    android:layout_below="@id/tvIcWifi"
+                    android:layout_toEndOf="@id/tvBathText"
+                    android:layout_marginStart="15dp"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:textColor="@color/colorBlack" />
+
+                <RatingBar
+                    android:id="@+id/rbEstrellasDescripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvNombreDescripcion"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:clickable="false"
+                    android:progressTint="@color/colorGold"
+                    style="?android:attr/ratingBarStyleSmall"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"/>
+
+                <TextView
+                    android:id="@+id/tvPuntos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:padding="2dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:gravity="center_vertical"
+                    tools:text="7.8"
+                    android:background="@drawable/forma_relleno_puntuacion_hotel"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvPuntos"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/standar_text_size"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/rate_title"/>
+
+                <TextView
+                    android:id="@+id/tvDescripcionNumReservasTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPuntos"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/booked_title"/>
+
+                <TextView
+                    android:id="@+id/tvReservado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPuntos"
+                    android:layout_toEndOf="@id/tvDescripcionNumReservasTitulo"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    android:gravity="center_vertical"
+                    tools:text="8" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"/>
+
+                <ImageView
+                    android:id="@+id/ivMapaDescripcion"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/mapa"/>
+
+                <TextView
+                    android:id="@+id/tvDireccionTexto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMapaDescripcion"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/standar_text_size"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/activity_description_direccion_text"/>
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvDireccionTexto"
+                    android:layout_marginStart="5dp"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/standar_text_size"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    tools:text="Localidad"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"/>
+
+                <TextView
+                    android:id="@+id/tvDescripcionTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="@dimen/standar_text_size"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/description_title"/>
+
+                <TextView
+                    android:id="@+id/tvDescripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDescripcionTitulo"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorBlack"
+                    tools:text="Encantador hotel situado en las afueras de un...Los hoteles de montaña, tal como dice su nombre, se encuentran ubicados rodeados de montañas, cerca de una montaña, o justo en una de ellas. ... Un hotel de montaña ofrece habitaciones muy sencillas, con calefacción para el invierno y aire acondicionado para el verano." />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"/>
+
+                <TextView
+                    android:id="@+id/tvPrecioDesde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/average_price_title"/>
+
+                <TextView
+                    android:id="@+id/tvPrecioMedio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvPrecioDesde"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    tools:text="65"/>
+
+                <TextView
+                    android:id="@+id/tvSimboloDineroDescripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvPrecioMedio"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/euros_title" />
+
+                <TextView
+                    android:id="@+id/tvIvaIncluidoDescripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvSimboloDineroDescripcion"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/row_list_card_texto_anticipo"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorBlack"
+                    app:drawableStartCompat="@drawable/ic_row_card_check" />
+
+                <TextView
+                    android:id="@+id/tvCancelacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvIvaIncluidoDescripcion"
+                    android:layout_toEndOf="@id/tvSimboloDineroDescripcion"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:textColor="@color/color_verde"
+                    android:textSize="14sp"
+                    android:text="@string/row_cancelacion"
+                    app:drawableStartCompat="@drawable/ic_row_card_list_cancelation" />
+
+                <TextView
+                    android:id="@+id/tvEfectivoTarjeta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvCancelacion"
+                    android:layout_toEndOf="@id/tvSimboloDineroDescripcion"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/row_efectivo_o_tarjeta"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    app:drawableStartCompat="@drawable/ic_row_card_list_credit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvEfectivoTarjeta"
+                    android:layout_toEndOf="@id/tvSimboloDineroDescripcion"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:padding="2dp"
+                    android:text="@string/description_descuento_premium"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/shape_label"
+                    app:drawableStartCompat="@drawable/ic_description_oferta" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="103dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:background="@color/colorWhite">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"/>
+
+                <Button
+                    android:id="@+id/bSeleccionar"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:text="@string/check_title" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_views"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

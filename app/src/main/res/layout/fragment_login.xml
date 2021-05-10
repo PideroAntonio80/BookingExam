@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorLightGrey"
+
+    tools:context=".feature.login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageViewLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/logo_booking"
+        app:srcCompat="@drawable/logobueno" />
+
+    <RelativeLayout
+        android:id="@+id/rlLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewLogin"
+        android:layout_centerHorizontal="true"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tvMainTituloLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bowlby_one_sc"
+            android:layout_centerHorizontal="true"
+            android:shadowColor="@color/colorBlack"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="15"
+            android:text="@string/session_start_title"
+            android:textColor="@color/colorWhite"
+            android:textSize="23sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmailMain"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvMainTituloLogin"
+            android:layout_gravity="center"
+            app:boxBackgroundColor="@color/colorWhite"
+            app:boxStrokeColor="@color/colorWhite"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:hintTextColor="@color/colorBlack">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmailMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:hint="@string/email_title"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPasswordMain"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tilEmailMain"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            app:boxBackgroundColor="@color/colorWhite"
+            app:boxStrokeColor="@color/colorWhite"
+            app:endIconMode="password_toggle"
+            app:hintTextColor="@color/colorBlack">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPasswordMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/password_title"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btLoginMain"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/tilPasswordMain"
+            android:gravity="center"
+            android:background="@drawable/button_border"
+            android:text="@string/login_button"
+            android:textSize="@dimen/standar_text_size"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tvMainTituloRegister"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/bowlby_one_sc"
+            android:shadowColor="@color/colorBlack"
+            android:shadowRadius="15"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:gravity="center"
+            android:text="@string/not_registered_yet_title"
+            android:textColor="@color/colorWhite"
+            android:textSize="23sp" />
+
+        <Button
+            android:id="@+id/btRegistrateMain"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvMainTituloRegister"
+            android:layout_centerHorizontal="true"
+            android:text="@string/register_button"
+            android:textSize="15sp"
+            app:strokeColor="@color/logo_booking"
+            android:textColor="@color/logo_booking"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

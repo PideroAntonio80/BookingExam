@@ -1,4 +1,4 @@
-package com.svalero.bookingexam.feature;
+package com.svalero.bookingexam.feature.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.widget.TextView;
 
 import com.svalero.bookingexam.R;
+import com.svalero.bookingexam.feature.main.MainActivity;
 
 public class FinalSplashActivity extends AppCompatActivity {
     private String message;

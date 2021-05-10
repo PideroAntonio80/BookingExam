@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,103 +11,201 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/rowBookHotelsListCard"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:cardElevation="5dp"
+        android:layout_height="200dp"
+        android:layout_margin="3dp"
+        app:cardElevation="20dp"
         app:cardCornerRadius="5dp"
-        android:layout_margin="3dp">
+        android:background="@color/colorWhite">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="100">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ivFotoBook"
-                android:layout_width="0dp"
+                android:layout_width="130dp"
                 android:layout_height="match_parent"
-                android:layout_weight="40"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/ic_launcher_background" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="60"
-                android:weightSum="100"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvNombreBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/standar_margin_start"
+                tools:text="Nombre Hotel"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:layout_toEndOf="@id/ivFotoBook"/>
 
+            <ImageView
+                android:id="@+id/ivIconFavBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_row_card_list_favourite_gap"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"/>
 
-                <TextView
-                    android:id="@+id/tvNombre"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="35"
-                    android:paddingLeft="12dp"
-                    android:gravity="center_vertical"
-                    tools:text="Nombre Hotel"
-                    android:textStyle="bold"
-                    android:textSize="30dp"/>
+            <RatingBar
+                android:id="@+id/rbEstrellasBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNombreBook"
+                android:layout_toEndOf="@id/ivFotoBook"
+                android:layout_marginStart="@dimen/standar_margin_start"
+                android:clickable="false"
+                android:progressTint="@color/colorGold"
+                style="?android:attr/ratingBarStyleSmall"/>
 
-                <TextView
-                    android:id="@+id/tvNombreLocalidad"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="25"
-                    android:paddingLeft="12dp"
-                    android:gravity="center_vertical"
-                    tools:text="Nombre Localidad"
-                    android:textStyle="bold"
-                    android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/tvPuntuacionBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rbEstrellasBook"
+                android:layout_toEndOf="@id/ivFotoBook"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="@dimen/standar_margin_start"
+                android:padding="2dp"
+                android:textSize="@dimen/standar_text_size"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:gravity="center_vertical"
+                tools:text="7.8"
+                android:background="@drawable/forma_relleno_puntuacion_hotel"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="15" />
+            <TextView
+                android:id="@+id/tvPuntuacionBookText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="@dimen/standar_margin_start"
+                android:textSize="@dimen/standar_text_size"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:text="@string/rate_title"
+                android:textColor="@color/colorBlack"
+                android:layout_below="@id/rbEstrellasBook"
+                android:layout_toEndOf="@id/tvPuntuacionBook"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="25"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
+            <TextView
+                android:id="@+id/tvNombreLocalidadBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/ivFotoBook"
+                android:layout_below="@id/tvPuntuacionBook"
+                android:layout_marginStart="@dimen/standar_margin_start"
+                android:gravity="center_vertical"
+                tools:text="Nombre Localidad"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"/>
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4"
-                        android:paddingLeft="12dp"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:text="@string/booked_title"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/tvPrecioBook"
+                android:layout_below="@id/tvNombreLocalidadBook"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="5dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:text="@string/average_price_title"/>
 
-                    <TextView
-                        android:id="@+id/tvEstrellas"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5"
-                        android:paddingLeft="5dp"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        tools:text="nº" />
+            <TextView
+                android:id="@+id/tvPrecioBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/tvSimboloDinero"
+                android:layout_below="@id/tvNombreLocalidadBook"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="3dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                tools:text="225.50"/>
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4.5"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:text="@string/times_title" />
+            <TextView
+                android:id="@+id/tvSimboloDinero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/tvNombreLocalidadBook"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:text="@string/prize_title" />
 
-                </LinearLayout>
+            <TextView
+                android:id="@+id/numberBooksText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rbEstrellasBook"
+                android:layout_toEndOf="@id/tvPuntuacionBookText"
+                android:layout_marginTop="@dimen/standar_margin_top"
+                android:layout_marginStart="50dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/standar_text_size"
+                android:gravity="center_vertical"
+                android:text="@string/row_book_n_reservas"/>
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvNumberBooks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rbEstrellasBook"
+                android:layout_toEndOf="@id/numberBooksText"
+                android:layout_marginTop="@dimen/standar_margin_top"
+                android:layout_marginStart="@dimen/standar_margin_start"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/standar_text_size"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                tools:text="8"/>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tvIvaIncluido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/row_list_card_texto_anticipo"
+                android:layout_below="@id/tvPrecioBook"
+                android:textSize="14sp"
+                android:textColor="@color/colorBlack"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                app:drawableStartCompat="@drawable/ic_row_card_check" />
+
+            <TextView
+                android:id="@+id/tvCancelacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvIvaIncluido"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/color_verde"
+                android:textSize="14sp"
+                android:text="@string/row_cancelacion"
+                app:drawableStartCompat="@drawable/ic_row_card_list_cancelation" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCancelacion"
+                android:text="@string/row_efectivo_o_tarjeta"
+                android:textColor="@color/colorBlack"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                app:drawableStartCompat="@drawable/ic_row_card_list_credit" />
+
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+</RelativeLayout>

@@ -15,9 +15,7 @@ public interface ListHotelsContract {
     }
 
     interface Model {
-        /*Me tienes que mandar el Callback, camino de retorno*/
         void getHotelsWS(OnLstHotelsListener onLstHotelsListener);
-        /*Programación Reactiva (Callback)*/
         interface OnLstHotelsListener{
             void resolve(ArrayList<Hotel> hotels);
             void reject(String error);

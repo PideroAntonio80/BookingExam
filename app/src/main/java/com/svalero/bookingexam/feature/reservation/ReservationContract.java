@@ -2,7 +2,7 @@ package com.svalero.bookingexam.feature.reservation;
 
 import com.svalero.bookingexam.data.BookingRoom;
 
-public class ReservationContract {
+public interface ReservationContract {
     interface View {
         void success(String message);
         void failure(String message);

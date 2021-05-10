@@ -1,5 +1,7 @@
 package com.svalero.bookingexam.data;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,9 +18,13 @@ public class Room {
     private static final String NOMBRE_HOTEL = "nombreHotel";
     private static final String NOMBRE_LOCALIDAD = "localidad";
 
-    private int idRoom, capacidad, idHotel;
+    private int idRoom, capacidad;
+    @SerializedName("hotel")
+    private int idHotel;
     private double precio;
-    private String disponible, nombreHotel, nombreLocalidad;
+    private String disponible, nombreHotel;
+    @SerializedName("localidad")
+    private String nombreLocalidad;
 
     private static ArrayList<Room> list;
 

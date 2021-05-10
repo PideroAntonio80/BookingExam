@@ -1,19 +1,24 @@
-package com.svalero.bookingexam.feature;
+package com.svalero.bookingexam.feature.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.feature.custom_search.SearchActivity;
@@ -21,10 +26,10 @@ import com.svalero.bookingexam.feature.list_booked.BookActivity;
 import com.svalero.bookingexam.feature.list_hotels.view.ListHotelsActivity;
 import com.svalero.bookingexam.utils.customui.DatePickerFragment;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainFragment extends Fragment {
+    private View view;
     private TextInputLayout numPersonas;
-    private EditText personas;
+    private TextInputEditText personas;
     private Button dateIn;
     private Button dateOut;
     private Button buscar;
@@ -33,64 +38,45 @@ public class MainActivity extends AppCompatActivity {
     private String numPerson;
     private String dateStart;
     private String dateEnd;
+    private LayoutInflater menuInflater;
+
+    private static String TAG = MainFragment.class.getSimpleName();
+
+    public MainFragment() {
+    }
+
+    public static MainFragment newInstance() {
+        MainFragment fragment = new MainFragment();
+        return fragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_main, container, false);
 
         initView();
 
         initListeners();
 
-        buscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (personas.getText().equals("") || personas.getText().equals("0")) {
-                    info("Debes indicar un numero de personas mayor que 0");
-                    return;
-                }
-                numPerson = String.valueOf(personas.getText());
-                Intent intent = new Intent(getBaseContext(), SearchActivity.class);
-                intent.putExtra("nombre_localidad", localidad);
-                intent.putExtra("numero_personas", numPerson);
-                intent.putExtra("fecha_entrada", dateStart);
-                intent.putExtra("fecha_salida", dateEnd);
-                startActivity(intent);
-                System.out.println(numPerson);
-            }
-        });
-    }
+        Log.d(TAG, "onCreateView: página busqueda");
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_overflow, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if(id == R.id.oiTodosHoteles) {
-            Intent navegarTodosHoteles = new Intent(getBaseContext(), ListHotelsActivity.class);
-            startActivity(navegarTodosHoteles);
-        } else if(id == R.id.oiMasReservados) {
-            Intent navegarHotelesMasReservados = new Intent(getBaseContext(), BookActivity.class);
-            startActivity(navegarHotelesMasReservados);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void info(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        return view;
     }
 
     public void initView() {
-        numPersonas = findViewById(R.id.tilNumPerson);
-        personas = findViewById(R.id.etNumPerson);
-        dateIn = findViewById(R.id.bDateIn);
-        dateOut = findViewById(R.id.bDateOut);
-        buscar = findViewById(R.id.bBuscar);
-        location = findViewById(R.id.sLocation);
+        numPersonas = view.findViewById(R.id.tilNumPerson);
+        personas = view.findViewById(R.id.tietNumPerson);
+        dateIn = view.findViewById(R.id.bDateIn);
+        dateOut = view.findViewById(R.id.bDateOut);
+        buscar = view.findViewById(R.id.bBuscar);
+        location = view.findViewById(R.id.sLocation);
     }
 
     public void initListeners() {
@@ -117,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                         dateStart = String.valueOf(dateIn.getText());
                     }
                 });
-                calendarioIn.show(getSupportFragmentManager(), "fechaIda");
+                calendarioIn.show(getChildFragmentManager(), "fechaIda");
             }
         });
 
@@ -144,11 +130,11 @@ public class MainActivity extends AppCompatActivity {
                         dateEnd = String.valueOf(dateOut.getText());
                     }
                 });
-                calendarioOut.show(getSupportFragmentManager(), "fechaVuelta");
+                calendarioOut.show(getChildFragmentManager(), "fechaVuelta");
             }
         });
 
-        ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(view.getContext(),
                 R.array.localidades, android.R.layout.simple_spinner_dropdown_item);
         location.setAdapter(spinAdapter);
 
@@ -184,9 +170,31 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
+        buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (String.valueOf(personas.getText()).equals("") || String.valueOf(personas.getText()).equals("0")) {
+                    numPersonas.setError("Campo obligatorio");
+                    return;
+                }
+                numPerson = String.valueOf(personas.getText());
+                Intent intent = new Intent(view.getContext(), SearchActivity.class);
+                intent.putExtra("nombre_localidad", localidad);
+                intent.putExtra("numero_personas", numPerson);
+                intent.putExtra("fecha_entrada", dateStart);
+                intent.putExtra("fecha_salida", dateEnd);
+                startActivity(intent);
+            }
+        });
+
+        personas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numPersonas.setError(null);
             }
         });
     }
-
 }

@@ -13,11 +13,10 @@ public interface LoginContract {
     }
 
     interface Model {
-        /*Programación Reactiva*/
+        void getUserService(LoginContract.Model.OnLoginUserListener onLoginUserListener, User user);
         interface OnLoginUserListener {
             void onFinished(User user);
             void onFailure(String error);
         }
-        void getUserService(OnLoginUserListener onLoginUserListener, User user);
     }
 }

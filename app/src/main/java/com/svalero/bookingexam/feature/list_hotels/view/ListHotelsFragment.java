@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class ListHotelsFragment extends Fragment {
     private RecyclerView.LayoutManager lManager;
 
     private ArrayList<Hotel> hotels;
+    private static String TAG = ListHotelsFragment.class.getSimpleName();
 
     private static final String EXTRA_LIST = "param1";
 
@@ -31,6 +33,7 @@ public class ListHotelsFragment extends Fragment {
     }
 
     public static ListHotelsFragment newInstance(ArrayList<Hotel> hotels) {
+        Log.d("[ListHotelsFragment]", "Nueva instancia de este fragment");
         ListHotelsFragment fragment = new ListHotelsFragment();
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_LIST, hotels);

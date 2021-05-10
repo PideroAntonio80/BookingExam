@@ -1,5 +1,7 @@
 package com.svalero.bookingexam.data;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,10 +15,15 @@ public class User {
     private static final String EMAIL = "email";
     private static final String PASSWORD = "password";
 
+    @SerializedName("idUser")
     private int id;
+    @SerializedName("nombre")
     private String name;
+    @SerializedName("apellidos")
     private String sureName;
+    @SerializedName("email")
     private String email;
+    @SerializedName("password")
     private String password;
 
     private static ArrayList<User> list;

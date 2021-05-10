@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.feature.list_hotels.ListAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CategoryHotelsFragment extends Fragment {
 
@@ -25,6 +27,8 @@ public class CategoryHotelsFragment extends Fragment {
     private ArrayList<Hotel> hotels;
     private ArrayList<Hotel> categoryHotels;
 
+    private static String TAG = CategoryHotelsFragment.class.getSimpleName();
+
     private static final String EXTRA_CATEGORY_LIST = "param1";
 
     public CategoryHotelsFragment() {
@@ -32,6 +36,7 @@ public class CategoryHotelsFragment extends Fragment {
 
 
     public static CategoryHotelsFragment newInstance(ArrayList<Hotel> hotels) {
+        Log.d(TAG, "Nueva instancia de este fragment");
         CategoryHotelsFragment fragment = new CategoryHotelsFragment();
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_CATEGORY_LIST, hotels);
@@ -55,7 +60,7 @@ public class CategoryHotelsFragment extends Fragment {
 
         initComponents();
 
-        categoryHotels = Hotel.getListaDestacados(hotels);
+        categoryHotels = getListaDestacados(hotels);
 
         loadData(categoryHotels);
 
@@ -74,5 +79,10 @@ public class CategoryHotelsFragment extends Fragment {
         ListAdapter listAdapter = new ListAdapter(hotels);
         listAdapter.notifyDataSetChanged();
         recycler.setAdapter(listAdapter);
+    }
+
+    public ArrayList<Hotel> getListaDestacados(ArrayList<Hotel> list) {
+        Collections.sort(list, (h1, h2) -> new Integer(h2.getEstrellas()).compareTo(new Integer(h1.getEstrellas())));
+        return list;
     }
 }

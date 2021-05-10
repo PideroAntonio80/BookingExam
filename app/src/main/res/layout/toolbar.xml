@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.CollapsingToolbarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/collapsing_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    app:contentScrim="@color/logo_booking"
+    app:expandedTitleMarginStart="56dp"
+    app:expandedTitleMarginEnd="56dp"
+    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_views"/>
+
+    <ImageView
+        android:id="@+id/ivFotoDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="255dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_views"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:contentDescription="@string/app_name"
+        android:layout_width="match_parent"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+        app:titleTextColor="@android:color/white"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_scrollFlags="scroll|enterAlways" />
+
+</com.google.android.material.appbar.CollapsingToolbarLayout>

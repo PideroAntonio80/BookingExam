@@ -7,11 +7,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".feature.custom_search.SearchActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearch"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/llLayoutErrorSearch"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvErrorSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/layoutError"/>
+
+        <Button
+            android:id="@+id/bRetrySearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Reintentar"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoadingSearch"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
 
 </LinearLayout>

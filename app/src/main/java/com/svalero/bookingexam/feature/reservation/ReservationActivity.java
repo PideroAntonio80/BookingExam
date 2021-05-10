@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,8 @@ import android.widget.Toast;
 
 import com.svalero.bookingexam.R;
 import com.svalero.bookingexam.data.BookingRoom;
-import com.svalero.bookingexam.feature.FinalSplashActivity;
+import com.svalero.bookingexam.feature.list_hotels.view.ListHotelsActivity;
+import com.svalero.bookingexam.feature.splash.FinalSplashActivity;
 import com.svalero.bookingexam.utils.customui.DatePickerFragment;
 
 import java.sql.Date;
@@ -29,10 +31,15 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
     private String option;
     private double factura, facturaR;
 
+    private static String TAG = ReservationActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         initComponents();
 
@@ -95,11 +102,8 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
             nombreHotel.setText(miHotelR);
             nombreLocalidad.setText(miLocalidadR);
 
-            setFinalMessage();
+            setFinalMessageR();
 
-            if (fechaIn != null) {
-                fraseFinal.setText("Pulse finalizar para reservar");
-            }
             if (fechaInR != null) {
                 fechaEntrada.setText(fechaInR);
             }
@@ -131,7 +135,6 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
         long diffDateMs = fecha2.getTime() - fecha1.getTime();
         long diffDays = ((diffDateMs / 1000) / 3600) / 24;
         return (int)diffDays;
-
     }
 
     public double prize(double roomPrize, int persons, int nights) {
@@ -270,7 +273,6 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
                     bookingRoom.setPrecio(facturaR);
                     reservationPresenter.makeReservation(bookingRoom);
                 }
-
             }
         });
     }
@@ -284,8 +286,18 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
         fraseFinal.setText(option);
     }
 
+    public void setFinalMessageR() {
+        Resources res = getResources();
+        String completedData = res.getString(R.string.final_message_completed_data);
+        String incompletedData = res.getString(R.string.final_message_incompleted_data);
+        String option = "";
+        option = (fechaInR == null) ? incompletedData : completedData;
+        fraseFinal.setText(option);
+    }
+
     @Override
     public void success(String message) {
+        Log.d(TAG, "success: Reserva registrada");
         Intent intent = new Intent(getBaseContext(), FinalSplashActivity.class);
         intent.putExtra("exito", message);
         startActivity(intent);
@@ -294,5 +306,10 @@ public class ReservationActivity extends AppCompatActivity implements Reservatio
     @Override
     public void failure(String message) {
         Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

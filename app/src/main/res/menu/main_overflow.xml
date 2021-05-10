@@ -2,10 +2,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<item
-        android:id="@+id/oiBusqueda"
-        android:title="@string/overflow_item_busqueda"
-        />-->
     <item
         android:id="@+id/oiTodosHoteles"
         android:title="@string/overflow_item_todos_hoteles" />

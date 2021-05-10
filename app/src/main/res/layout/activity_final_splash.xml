@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/colorBlue"
+    android:background="@color/logo_booking"
 
-    tools:context=".feature.FinalSplashActivity">
+    tools:context=".feature.splash.FinalSplashActivity">
 
     <TextView
         android:id="@+id/tvMensajeFinal"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,16 +23,19 @@ import java.util.ArrayList;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewHolder> {
     private ArrayList<Hotel> lstHotel;
+    private float estrellasCategoria;
 
     public static class HotelListViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView fotoHotel;
         public TextView nombreHotel;
         public TextView nombreLocalidad;
-        public TextView categoria;
         public TextView puntuacion;
         public TextView precio;
+        public RatingBar estrellas;
         public CardView rowList;
+        public ImageView iconFav;
+        public boolean push = false;
 
         public View view;
 
@@ -42,9 +46,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewH
             fotoHotel = (ImageView) v.findViewById(R.id.ivFoto);
             nombreHotel = (TextView) v.findViewById(R.id.tvNombre);
             nombreLocalidad = (TextView) v.findViewById(R.id.tvNombreLocalidad);
-            categoria = (TextView) v.findViewById(R.id.tvEstrellas);
             puntuacion = (TextView) v.findViewById(R.id.tvPuntuacion);
             precio = (TextView) v.findViewById(R.id.tvPrecio);
+            estrellas = (RatingBar) v.findViewById(R.id.rbEstrellas);
+            iconFav = (ImageView) v.findViewById(R.id.ivIconFav);
+
+            iconFav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    push = !push;
+                    if(push) {
+                        iconFav.setImageResource(R.drawable.ic_row_card_list_favourite_full);
+                    } else {
+                        iconFav.setImageResource(R.drawable.ic_row_card_list_favourite_gap);
+                    }
+                }
+            });
         }
     }
 
@@ -67,9 +84,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.HotelListViewH
         Picasso.get().load(urlImage).into(holder.fotoHotel);
         holder.nombreHotel.setText(hotel.getNombre());
         holder.nombreLocalidad.setText(hotel.getNombre_localidad());
-        holder.categoria.setText(String.valueOf(hotel.getEstrellas()));
         holder.puntuacion.setText(String.valueOf(hotel.getPuntuacion()));
         holder.precio.setText(String.valueOf(hotel.getPrecio_medio()));
+        estrellasCategoria = hotel.getEstrellas();
+        holder.estrellas.setRating(estrellasCategoria);
         holder.view.setOnClickListener(v -> {
             Intent intent = new Intent(holder.view.getContext(), DescriptionActivity.class);
             intent.putExtra("my_hotel", hotel);

@@ -137,9 +137,10 @@ public class Hotel implements Serializable {
 
         return list;
     }
-    public static ArrayList<Hotel> getList() {
+
+    /*public static ArrayList<Hotel> getList() {
         return list;
-    }
+    }*/
 
     public static ArrayList<Hotel> getListaReservados() {
         Collections.sort(list, new Comparator<Hotel>() {
@@ -151,7 +152,7 @@ public class Hotel implements Serializable {
         return list;
     }
 
-    public static ArrayList<Hotel> getListaDestacados() {
+    /*public static ArrayList<Hotel> getListaDestacados() {
         Collections.sort(list, new Comparator<Hotel>() {
             @Override
             public int compare(Hotel h1, Hotel h2) {
@@ -189,26 +190,5 @@ public class Hotel implements Serializable {
             }
         });
         return list;
-    }
-
-    public static ArrayList<Hotel> getListaDestacados(ArrayList<Hotel> list) {
-        Collections.sort(list, (h1, h2) -> new Integer(h2.getEstrellas()).compareTo(new Integer(h1.getEstrellas())));
-        return list;
-    }
-
-    public static ArrayList<Hotel> getListaPrecioAsc(ArrayList<Hotel> list) {
-        Collections.sort(list, (h1, h2) -> new Double(h1.getPrecio_medio()).compareTo(new Double(h2.getPrecio_medio())));
-        return list;
-    }
-
-    public static ArrayList<Hotel> getListaPrecioDesc(ArrayList<Hotel> list) {
-        Collections.sort(list, (h1, h2) -> new Double(h2.getPrecio_medio()).compareTo(new Double(h1.getPrecio_medio())));
-        return list;
-    }
-
-    public static ArrayList<Hotel> getListaPuntos(ArrayList<Hotel> list) {
-        Collections.sort(list, (h1, h2) -> new Double(h2.getPuntuacion()).compareTo(new Double(h1.getPuntuacion())));
-        return list;
-    }
-
+    }*/
 }

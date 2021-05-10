@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,205 +11,201 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/rowRoomCard"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:cardElevation="5dp"
+        android:layout_height="200dp"
+        android:layout_margin="3dp"
+        app:cardElevation="20dp"
         app:cardCornerRadius="5dp"
-        android:layout_margin="3dp">
+        android:background="@color/colorWhite">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="100">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ivFotoRoom"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="40"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_alignParentEnd="true"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/hotelportada" />
+                app:srcCompat="@drawable/room" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="60"
-                android:weightSum="100"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvNumeroRoomText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:text="@string/room_title"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="15"
-                    android:orientation="horizontal"
-                    android:weightSum="10"
-                    android:layout_marginTop="3dp">
+            <TextView
+                android:id="@+id/tvNumeroRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tvNumeroRoomText"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                tools:text="12"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"/>
 
-                    <TextView
-                        android:id="@+id/tvNombreHotelRoom"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:paddingLeft="12dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        tools:text="Nombre Hotel"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="10dp"/>
+            <TextView
+                android:id="@+id/tvCapacidadText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNumeroRoomText"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"
+                app:drawableStartCompat="@drawable/ic_row_room_people" />
 
-                    <TextView
-                        android:id="@+id/tvNombreLocalidadRoom"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="12dp"
-                        android:textStyle="bold"
-                        tools:text="Nombre Localidad"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="10dp" />
+            <TextView
+                android:id="@+id/tvCapacidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNumeroRoomText"
+                android:layout_toEndOf="@id/tvCapacidadText"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                tools:text="3"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"/>
 
-                </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNumeroRoom"
+                android:layout_toEndOf="@id/tvCapacidad"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="3dp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/persons_title"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="16"
-                    android:orientation="horizontal"
-                    android:weightSum="10"
-                    android:layout_marginTop="7dp">
+            <TextView
+                android:id="@+id/tvNombreHotelRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCapacidadText"
+                android:gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                tools:text="Nombre Hotel"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3.6"
-                        android:paddingLeft="12dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:text="@string/room_title"
-                        android:textColor="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/tvNombreLocalidadRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNombreHotelRoom"
+                android:layout_marginStart="5dp"
+                tools:text="Bielsa"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"
+                app:drawableStartCompat="@drawable/ic_row_room_location" />
 
-                    <TextView
-                        android:id="@+id/tvNumeroRoom"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="6.4"
-                        android:paddingLeft="5dp"
-                        android:gravity="center_vertical"
-                        android:textStyle="bold"
-                        tools:text="nº"
-                        android:textColor="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/tvIcWifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNombreLocalidadRoom"
+                android:gravity="center"
+                android:layout_marginStart="180dp"
+                app:drawableStartCompat="@drawable/ic_description_wifi" />
 
-                </LinearLayout>
+            <TextView
+                android:id="@+id/tvWifiText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_description_wifi_gratis"
+                android:layout_below="@id/tvIcWifi"
+                android:layout_marginStart="165dp"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlack" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="16"
-                    android:orientation="horizontal"
-                    android:weightSum="10"
-                    android:layout_marginTop="7dp">
+            <TextView
+                android:id="@+id/tvIcBath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNombreLocalidadRoom"
+                android:layout_toEndOf="@id/tvIcWifi"
+                android:gravity="center"
+                android:layout_marginStart="52dp"
+                app:drawableStartCompat="@drawable/ic_description_bath" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3.6"
-                        android:paddingLeft="12dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:text="@string/capacity_title"
-                        android:textColor="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/tvBathText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_description_bath"
+                android:layout_below="@id/tvIcWifi"
+                android:layout_toEndOf="@id/tvWifiText"
+                android:layout_marginStart="15dp"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlack" />
 
-                    <TextView
-                        android:id="@+id/tvCapacidad"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.2"
-                        android:paddingLeft="5dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        tools:text="nº"
-                        android:textColor="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/tvPrecioRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivFotoRoom"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="5dp"
+                tools:text="65"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"/>
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5.2"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:text="@string/persons_title"
-                        android:textColor="@color/colorBlack" />
+            <TextView
+                android:id="@+id/tvPrecioRoomText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivFotoRoom"
+                android:layout_toEndOf="@id/tvPrecioRoom"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="3dp"
+                android:text="@string/prize_title"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"/>
 
-                </LinearLayout>
+            <TextView
+                android:id="@+id/tvIvaIncluido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivFotoRoom"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="9dp"
+                android:layout_toEndOf="@id/tvPrecioRoomText"
+                android:text="@string/row_list_card_texto_anticipo"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_row_card_check" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="16"
-                    android:orientation="horizontal"
-                    android:weightSum="10"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="3dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@id/tvPrecioRoom"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/shape_button_room"
+                android:textColor="@color/color_azul_claro"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:text="@string/push_here_for_booking_title" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3.6"
-                        android:paddingLeft="12dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:text="@string/prize_literal_title"
-                        android:textColor="@color/colorBlack"/>
-
-                    <TextView
-                        android:id="@+id/tvPrecioRoom"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5"
-                        android:paddingLeft="5dp"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:text="$"
-                        android:textColor="@color/colorBlack"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4.9"
-                        android:textStyle="bold"
-                        android:gravity="center_vertical"
-                        android:text="@string/prize_title"
-                        android:textColor="@color/colorBlack"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="35"
-                    android:weightSum="100"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="65"
-                        android:gravity="center"
-                        android:text="@string/push_here_for_booking_title"
-                        android:textColor="@color/colorWhite"
-                        android:background="@color/colorBlue"
-                        android:textStyle="bold"
-                        android:textSize="14dp"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+</RelativeLayout>

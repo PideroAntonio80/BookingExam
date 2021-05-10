@@ -3,20 +3,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorBlue"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="@color/colorLightGrey"
 
     tools:context=".feature.login.LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageViewLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/logo_booking"
+        app:srcCompat="@drawable/logobueno" />
+
     <LinearLayout
+        android:id="@+id/llIniciaSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="15dp"
-        android:background="@color/colorLightBlue">
+        android:visibility="visible"
+        android:padding="15dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -76,51 +85,28 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- <EditText
-             android:id="@+id/etEmail"
-             android:layout_width="match_parent"
-             android:layout_height="0dp"
-             android:layout_weight="10"
-             android:gravity="center"
-             android:hint="Email"
-             android:inputType="textEmailAddress"
-             android:textColorHint="@color/colorWhite"
-             android:textColor="@color/colorWhite"
-             android:textStyle="bold"
-             android:layout_marginBottom="8dp"/>
-
-         <EditText
-             android:id="@+id/etPassword"
-             android:layout_width="match_parent"
-             android:layout_height="0dp"
-             android:layout_weight="10"
-             android:gravity="center"
-             android:inputType="textPassword"
-             android:hint="@string/password_title"
-             android:textColorHint="@color/colorWhite"
-             android:textColor="@color/colorWhite"
-             android:textStyle="bold"
-             android:layout_marginBottom="30dp"/>-->
-
         <Button
             android:id="@+id/btLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/tilPasswordMain"
+            android:gravity="center"
             android:background="@drawable/button_border"
+            android:text="@string/login_button"
+            android:textSize="@dimen/standar_text_size"
             android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:text="@string/login_button" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llRegistrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="60dp"
-        android:padding="15dp"
-        android:background="@color/colorLightBlue">
+        android:visibility="visible"
+        android:layout_marginTop="20dp"
+        android:padding="15dp">
 
         <TextView
             android:layout_width="300dp"
@@ -139,15 +125,24 @@
 
         <Button
             android:id="@+id/btRegistrate"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/button_border"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:text="@string/register_button" />
+            android:layout_below="@id/tvMainTituloRegister"
+            android:layout_centerHorizontal="true"
+            android:text="@string/register_button"
+            android:textSize="15sp"
+            app:strokeColor="@color/logo_booking"
+            android:textColor="@color/logo_booking"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoadingLogin"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
 
 </LinearLayout>
 

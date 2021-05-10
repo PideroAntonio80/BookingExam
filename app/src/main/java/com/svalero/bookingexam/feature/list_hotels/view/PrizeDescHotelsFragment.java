@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.svalero.bookingexam.data.Hotel;
 import com.svalero.bookingexam.feature.list_hotels.ListAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class PrizeDescHotelsFragment extends Fragment {
 
@@ -25,12 +27,15 @@ public class PrizeDescHotelsFragment extends Fragment {
     private ArrayList<Hotel> hotels;
     private ArrayList<Hotel> prizeDescHotels;
 
+    private static String TAG = PrizeDescHotelsFragment.class.getSimpleName();
+
     private static final String EXTRA_PRIZE_DESC_LIST = "param1";
 
     public PrizeDescHotelsFragment() {
     }
 
     public static PrizeDescHotelsFragment newInstance(ArrayList<Hotel> hotels) {
+        Log.d(TAG, "Nueva instancia de este fragment");
         PrizeDescHotelsFragment fragment = new PrizeDescHotelsFragment();
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_PRIZE_DESC_LIST, hotels);
@@ -54,7 +59,7 @@ public class PrizeDescHotelsFragment extends Fragment {
 
         initComponents();
 
-        prizeDescHotels = Hotel.getListaPrecioDesc(hotels);
+        prizeDescHotels = getListaPrecioDesc(hotels);
 
         loadData(prizeDescHotels);
 
@@ -73,5 +78,10 @@ public class PrizeDescHotelsFragment extends Fragment {
         ListAdapter listAdapter = new ListAdapter(hotels);
         listAdapter.notifyDataSetChanged();
         recycler.setAdapter(listAdapter);
+    }
+
+    public ArrayList<Hotel> getListaPrecioDesc(ArrayList<Hotel> list) {
+        Collections.sort(list, (h1, h2) -> new Double(h2.getPrecio_medio()).compareTo(new Double(h1.getPrecio_medio())));
+        return list;
     }
 }

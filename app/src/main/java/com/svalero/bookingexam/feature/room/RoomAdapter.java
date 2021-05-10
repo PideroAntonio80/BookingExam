@@ -22,6 +22,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     public static String numPers;
     public static String fechaIn;
     public static String fechaOut;
+    public static String locationName;
 
     /*Tantos elementos como objetos quiera mostrar en la fila*/
     public static class RoomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -51,7 +52,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             Intent intent = new Intent(context, LoginActivity.class);
             intent.putExtra("room_id", String.valueOf(numeroRoom.getText()));
             intent.putExtra("nombre_hotel", nombreHotel.getText());
-            intent.putExtra("nombre_localidad", nombreLocalidad.getText());
+            intent.putExtra("nombre_localidad", RoomAdapter.locationName);
             intent.putExtra("num_person", RoomAdapter.numPers);
             intent.putExtra("fecha_in", RoomAdapter.fechaIn);
             intent.putExtra("fecha_out", RoomAdapter.fechaOut);
@@ -62,11 +63,12 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
 
     }
 
-    public RoomAdapter(ArrayList<Room> listRooms, String numPers, String fechaIn, String fechaOut) {
+    public RoomAdapter(ArrayList<Room> listRooms, String locationName, String numPers, String fechaIn, String fechaOut) {
         this.listRooms = listRooms;
         RoomAdapter.numPers = numPers;
         RoomAdapter.fechaIn = fechaIn;
         RoomAdapter.fechaOut = fechaOut;
+        RoomAdapter.locationName = locationName;
     }
 
     @NonNull
@@ -81,7 +83,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     public void onBindViewHolder(@NonNull RoomAdapter.RoomViewHolder holder, int position) {
         Room room = listRooms.get(position);
         holder.nombreHotel.setText(room.getNombreHotel());
-        holder.nombreLocalidad.setText(room.getNombreLocalidad());
+        holder.nombreLocalidad.setText(locationName);
         holder.numeroRoom.setText(String.valueOf(room.getIdRoom()));
         holder.capacidad.setText(String.valueOf(room.getCapacidad()));
         holder.precio.setText(String.valueOf(room.getPrecio()));

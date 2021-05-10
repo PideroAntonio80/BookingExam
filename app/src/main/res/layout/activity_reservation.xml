@@ -7,16 +7,511 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="100"
+    android:background="@color/colorLightGrey"
     tools:context=".feature.reservation.ReservationActivity">
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/logo_booking">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/logobueno" />
+
+        <TextView
+            android:id="@+id/icHotel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="12dp"
+            app:drawableStartCompat="@drawable/ic_reservation_hotel" />
+
+        <TextView
+            android:id="@+id/icHotelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/icHotel"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/reservation_alojamiento_text"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/icPlane"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/icHotelText"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="12dp"
+            app:drawableStartCompat="@drawable/ic_reservation_plane" />
+
+        <TextView
+            android:id="@+id/icPlaneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/icPlane"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/reservation_vuelos_text"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/icCar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/icPlaneText"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="12dp"
+            app:drawableStartCompat="@drawable/ic_reservaton_car" />
+
+        <TextView
+            android:id="@+id/icCarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/icCar"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/reservation_coches_text"
+            android:textColor="@color/colorWhite"/>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorWhite">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_views"/>
+
+        <TextView
+            android:id="@+id/tvClienteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_centerVertical="true"
+            android:text="@string/thanks_title"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tvClienteText"
+            android:layout_marginStart="5dp"
+            android:layout_centerVertical="true"
+            tools:text="Johnny"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_views"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorWhite">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_views"/>
+
+        <TextView
+            android:id="@+id/tvFraseFinReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            tools:text="Pulse finalizar para reservar"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/tvHotelReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvFraseFinReserva"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="5dp"
+            tools:text="Nombre Hotel"
+            android:textSize="@dimen/standar_text_size"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvLocalidadReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHotelReserva"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            tools:text="Localidad"
+            android:textSize="@dimen/standar_text_size"
+            android:textColor="@color/colorBlack"
+            app:drawableStartCompat="@drawable/ic_row_room_location" />
+
+        <TextView
+            android:id="@+id/tvNumeroRoomReservaText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLocalidadReserva"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/room_title"
+            android:textSize="@dimen/standar_text_size"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvNumeroRoomReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLocalidadReserva"
+            android:layout_toEndOf="@id/tvNumeroRoomReservaText"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="5dp"
+            tools:text="12"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvIcWifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLocalidadReserva"
+            android:gravity="center"
+            android:layout_marginStart="180dp"
+            app:drawableStartCompat="@drawable/ic_description_wifi" />
+
+        <TextView
+            android:id="@+id/tvWifiText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_description_wifi_gratis"
+            android:layout_below="@id/tvIcWifi"
+            android:layout_marginStart="165dp"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/tvIcBath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLocalidadReserva"
+            android:layout_toEndOf="@id/tvIcWifi"
+            android:gravity="center"
+            android:layout_marginStart="52dp"
+            app:drawableStartCompat="@drawable/ic_description_bath" />
+
+        <TextView
+            android:id="@+id/tvBathText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_description_bath"
+            android:layout_below="@id/tvIcWifi"
+            android:layout_toEndOf="@id/tvWifiText"
+            android:layout_marginStart="15dp"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/tvIcMount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLocalidadReserva"
+            android:layout_toEndOf="@id/tvIcBath"
+            android:gravity="center"
+            android:layout_marginStart="45dp"
+            app:drawableStartCompat="@drawable/ic_description_mountain" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_description_vistas"
+            android:layout_below="@id/tvIcWifi"
+            android:layout_toEndOf="@id/tvBathText"
+            android:layout_marginStart="15dp"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:textColor="@color/colorBlack" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_views"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorWhite">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_views"/>
+
+        <TextView
+            android:id="@+id/etNumPersonsReservaText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="3dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="3dp"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            app:drawableStartCompat="@drawable/ic_row_room_people" />
+
+        <EditText
+            android:id="@+id/etNumPersonsReserva"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_toEndOf="@id/etNumPersonsReservaText"
+            android:layout_marginTop="3dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:background="@color/colorLightGrey"
+            android:gravity="center"
+            tools:text="3"
+            android:inputType="number"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/etNumPersonsReservaTextDos"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_toEndOf="@id/etNumPersonsReserva"
+            android:layout_marginTop="3dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:background="@color/colorWhite"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/reservation_num_person_title" />
+
+        <TextView
+            android:id="@+id/etNochesReservaText"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@id/etNumPersonsReservaTextDos"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:textSize="15sp"
+            app:drawableStartCompat="@drawable/ic_reservation_nights" />
+
+        <TextView
+            android:id="@+id/tvNochesReserva"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_toEndOf="@id/etNochesReservaText"
+            android:layout_marginTop="3dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:gravity="center"
+            android:background="@color/colorLightGrey"
+            android:textSize="18sp"
+            tools:text="5"
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/etNochesReservaTextDos"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_toEndOf="@id/tvNochesReserva"
+            android:layout_marginTop="3dp"
+            android:background="@color/colorWhite"
+            android:gravity="center_vertical"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:text="@string/nights_title"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvEntradaText"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etNumPersonsReserva"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="5dp"
+            android:textAlignment="center"
+            android:text="@string/reservation_entrada_text"
+            android:textSize="12sp"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvSalidaText"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etNumPersonsReserva"
+            android:layout_toEndOf="@id/bFechaEntrada"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp"
+            android:textAlignment="center"
+            android:text="@string/reservation_salida_text"
+            android:textSize="12sp"
+            android:textColor="@color/colorBlack"/>
+
+        <Button
+            android:id="@+id/bFechaEntrada"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvEntradaText"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/colorLightGrey"
+            android:textColor="@color/colorBlack"
+            android:text="@string/date_in_button_title" />
+
+        <Button
+            android:id="@+id/bFechaSalida"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvEntradaText"
+            android:layout_toEndOf="@id/bFechaEntrada"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/colorLightGrey"
+            android:textColor="@color/colorBlack"
+            android:text="@string/date_out_button_title" />
+
+        <TextView
+            android:id="@+id/tvPrecioTotalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bFechaEntrada"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:text="@string/reservation_total_prize_title"
+            android:textSize="20sp"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvPrecioTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bFechaEntrada"
+            android:layout_toEndOf="@id/tvPrecioTotalText"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            tools:text="450.50"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvPrecioTotalSimbolo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bFechaEntrada"
+            android:layout_toEndOf="@id/tvPrecioTotal"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:text="@string/euros_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/tvIvaIncluidoDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPrecioTotal"
+            android:layout_toEndOf="@id/tvPrecioTotalText"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/row_list_card_texto_anticipo"
+            android:textSize="13sp"
+            android:textColor="@color/colorBlack"
+            app:drawableStartCompat="@drawable/ic_row_card_check" />
+
+        <TextView
+            android:id="@+id/tvCancelacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvIvaIncluidoDescripcion"
+            android:layout_toEndOf="@id/tvPrecioTotalText"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/color_verde"
+            android:textSize="14sp"
+            android:text="@string/row_cancelacion"
+            app:drawableStartCompat="@drawable/ic_row_card_list_cancelation" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCancelacion"
+            android:layout_toEndOf="@id/tvPrecioTotalText"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/row_efectivo_o_tarjeta"
+            android:textSize="14sp"
+            android:textColor="@color/colorBlack"
+            app:drawableStartCompat="@drawable/ic_row_card_list_credit" />
+
+        <Button
+            android:id="@+id/bFinalizar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/finish_reservation_title"
+            android:textSize="15sp"
+            android:textColor="@color/colorWhite"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_views"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
         android:orientation="horizontal"
         android:weightSum="10"
-        android:background="@color/colorLightBlue">
+        android:background="@color/colorLightGrey">
 
         <TextView
             android:layout_width="0dp"
@@ -59,7 +554,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="horizontal"
-        android:background="@color/colorLightBlue"
+        android:background="@color/colorLightGrey"
         android:weightSum="10">
 
         <TextView
@@ -120,7 +615,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="horizontal"
-        android:background="@color/colorLightBlue"
+        android:background="@color/colorLightGrey"
         android:weightSum="10">
 
         <TextView
@@ -183,7 +678,7 @@
         android:layout_height="0dp"
         android:layout_weight="6.5"
         android:orientation="horizontal"
-        android:background="@color/colorLightBlue"
+        android:background="@color/colorLightGrey"
         android:weightSum="10">
 
         <TextView
@@ -297,6 +792,6 @@
             android:background="@drawable/button_border"
             android:textColor="@color/colorWhite"/>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 </LinearLayout>
