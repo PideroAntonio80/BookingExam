@@ -40,6 +40,8 @@
             android:id="@+id/tvError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/standar_text_size"
+            android:textColor="@color/colorBlack"
             android:text="@string/layoutError"/>
 
         <Button

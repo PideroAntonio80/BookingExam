@@ -38,7 +38,7 @@ public class BookingNetwork {
     }
 
     public void getAllHotels(ListHotelsContract.Model.OnLstHotelsListener listener) {
-        BookingApi api = retrofit.create(BookingApi.class); // Uno para todos? BookingApi api (variable de clase)
+        BookingApi api = retrofit.create(BookingApi.class);
         api.getAllHotels().enqueue(new Callback<List<Hotel>>() {
             @Override
             public void onResponse(Call<List<Hotel>> call, Response<List<Hotel>> response) {
